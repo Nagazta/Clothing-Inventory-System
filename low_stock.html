@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Low Stock Items</title>
+    <style>
+        body {
+            background-color: #A9B5DF;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            border-radius: 8px;
+            margin-right: 10px;
+            width: 120px;
+            height: 50px;
+            padding: 8px 12px;
+            border: 2px solid black;
+            background: #A9B5DF;
+            cursor: pointer;
+        }
+        h1 { 
+            font-size: 45px; 
+        }
+        header {
+            background-color: #2D336B;
+            color: white;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 2px solid black;
+        }
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+        footer {
+            background-color: #2D336B;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+        }
+        
+        .table-container {
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #2D336B;
+            color: white;
+        }
+        .restock-btn {
+            background-color: #2D336B;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid black;
+            width: 200px;
+            position: relative;
+            margin-top: 20px;
+            left: 130px;
+        }
+        .search-button {
+            background-color: #2D336B;
+            color: white;
+            border: none;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 40px;
+        }
+        p {
+            margin-left: 130px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>LOW STOCK ITEMS</h1>
+        <nav>
+            <a href="index.html"><button>Home</button></a>
+            <a href="display.html"><button>Display</button></a>
+            <a href="filter.html"><button>Filter</button></a>
+            <a href="restock.html"><button>Restock</button></a>
+            <a href="low_stock.html"><button>Low Stock</button></a>
+            <a href="profile.html"><button>Profile</button></a>
+        </nav>
+    </div>
+</header>
+
+<div class="search-container">
+    <input type="text" class="search-input" id="searchBox" placeholder="Search items..." onkeyup="searchTable()">
+    <button style="margin-left: 140px;" class="search-button" onclick="searchTable()">Search</button>
+</div>
+
+<p>
+    Below is the list of items that are running low on stock. Please restock them as soon as possible.
+</p>
+
+<div class="table-container">
+    <table id="stockTable">
+        <tr>
+            <th>Item</th>
+            <th>Size</th>
+            <th>Stock Left</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Black Polo Shirt</td>
+            <td>S</td>
+            <td>1</td>
+            <td>Casual Wear</td>
+            <td>$25.99</td>
+        </tr>
+        <tr>
+            <td>Black Polo Shirt</td>
+            <td>M</td>
+            <td>1</td>
+            <td>Casual Wear</td>
+            <td>$25.99</td>
+        </tr>
+        <tr>
+            <td>Black Polo Shirt</td>
+            <td>L</td>
+            <td>1</td>
+            <td>Casual Wear</td>
+            <td>$25.99</td>
+        </tr>
+        <tr>
+            <td>Blue Denim Jacket</td>
+            <td>M</td>
+            <td>1</td>
+            <td>Outerwear</td>
+            <td>$45.99</td>
+        </tr>
+        <tr>
+            <td>Blue Denim Jacket</td>
+            <td>L</td>
+            <td>1</td>
+            <td>Outerwear</td>
+            <td>$45.99</td>
+        </tr>
+        <tr>
+            <td>White Casual Shirt</td>
+            <td>S</td>
+            <td>1</td>
+            <td>Casual Wear</td>
+            <td>$19.99</td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <p>CLOTHING STORE 2025</p>
+</footer>
+
+<script>
+    document.querySelector(".search-button").addEventListener("click", function () {
+        let input = document.querySelector(".search-input").value.toLowerCase();
+        let tableRows = document.querySelectorAll(".table-container table tr");
+    
+        tableRows.forEach((row, index) => {
+            if (index === 0) return; 
+    
+            let itemName = row.cells[0].textContent.toLowerCase(); 
+            if (itemName.includes(input)) {
+                row.style.display = ""; 
+            } else {
+                row.style.display = "none"; 
+            }
+        });
+    });
+    </script>
+    
+</body>
+</html>
