@@ -21,9 +21,8 @@
         }
        
         footer {
-            position: fixed;
             background-color: #2D336B;
-            width: 100%;
+            width: 97%;
             color: white;
             text-align: center;
             padding: 10px 20px;
@@ -45,6 +44,53 @@
             transition: 0.3s;
             
         }
+        h2{
+            font-size: 30px;
+        }
+        .profile-container{
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.7;
+        }
+        .profile-container label{
+            font-size: 25px;
+        }
+        .profile-container input{
+            width: 40%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        .profile-container button{
+            margin-top: 20px;
+        }
+
+        .password-container{
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.7;
+        }
+        .password-container label{
+            font-size: 25px;
+        }
+        .password-container input{
+            width: 40%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        
+        .password-container button{
+            margin-top: 20px;
+        }
        
        
      
@@ -65,7 +111,29 @@
             </nav>
         </div>
     </header>
-    
+    <div class = "profile-container">
+        <H2>Kyle Sepulveda</H2>
+        <h2> Nagz-22-20</h2>
+        <label for="Uname">Username</label> <br>
+        <input type="text" id="Uname" name="Uname" value="Nagz-22-20"> <br>
+        <label for="Fname">Full name</label> <br>
+        <input typpe ="text" id "fname" name = "fname" value = "Kyle Sepulveda"> <br>
+        <label for = "email">Email</label> <br>
+        <input type = "text" id = "email" name = "email" value = "kyle.sepulveda27@gmail.com"> <br>
+        <button>Edit Profile</button>
+    </div>
+    <hr>
+    <div class = "password-container">
+        <h2> Change Password</h2>
+        <label for = "Cpasswrod"> Current Password</label><br>
+        <input type = "password" id = "Cpassword" name = "Cpassword"> <br>
+        <label for = "Npassword"> New Password</label><br>
+        <input type = "password" id = "Npassword" name = "Npassword"> <br>
+        <label for = "Rpassword"> Retype Password</label><br>
+        <input type = "password" id = "Rpassword" name = "Rpassword"> <br>
+        <button>Change Password</button>
+    </div>
+ 
     
     
 
