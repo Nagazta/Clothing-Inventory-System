@@ -1,0 +1,568 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Page</title>
+    <style>
+        /* Your existing styles here */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #A1B0E0;
+        }
+        .header-container {
+            background-color: #A1B0E0;
+            padding: 10px;
+        }
+        .header {
+            background-color: #2E3B79;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #2E3B79;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            background-color: #A1B0E0;
+            border: 1px solid black;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .category-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .subcategory-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .filter-container {
+            max-width: 1000px; /* Adjusted max-width */
+            margin: 0 auto;
+            padding: 15px;
+            text-align: center;
+        }
+        .filter-row {
+            display: inline-flex;
+            gap: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgba(103, 128, 159, 0.6);
+            color: #FFFFFF;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            position: relative; /* For positioning the dropdowns */
+        }
+        .filter-row span {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .sort-by-container {
+    text-align: right;
+    padding-right: 20px;
+    position: relative; /* Ensures the dropdown is positioned relative to this container */
+}
+
+.sort-by {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    position: relative; /* For positioning the dropdown */
+}
+
+.sort-by span {
+    margin-left: 5px;
+}
+        .category-row span, .subcategory-row span {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .category-row span.active, .subcategory-row span.active {
+            color: #2E3B79;
+        }
+        .divider1 {
+            width: 1100px; /* Adjusted width */
+            height: 2px;
+            background-color: black;
+            margin: 10px auto;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 20px;
+            max-width: 1000px; /* Adjusted max-width */
+            margin: 20px auto;
+            text-align: center;
+        }
+        .product-box {
+    width: 200px; /* Adjusted width */
+    height: 170px; /* Adjusted height */
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    object-fit: cover; /* Ensures the image covers the box without stretching */
+    display: block; /* Ensures the image behaves like a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+}
+        .product-name {
+    margin-top: 10px;
+    font-size: 13px;
+    text-align: left;
+}
+
+        /* Dropdown styles */
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Position below the filter row */
+            background-color: white;
+            border: 1px solid #2E3B79;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 10;
+            width: 150px; /* Adjust width as needed */
+        }
+        .dropdown span {
+            display: block;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #2E3B79;
+        }
+        .dropdown span.selected {
+            background-color: #2E3B79; /* Background for selected option */
+            color: white; /* Text color for selected option */
+        }
+        .dropdown span:hover {
+            background-color: #f0f0f0;
+        }
+        /* Highlight selected option in filter row */
+        .filter-row .selected-option {
+            color: #2E3B79; /* Text color for selected option in filter row */
+        }
+
+        .sort-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position absolutely within the container */
+    top: 100%; /* Position below the "SORT BY" text */
+    right: 0; /* Align with the right edge of the container */
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    width: 150px; /* Fixed width */
+    z-index: 10;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    text-align: center; /* Center the text inside the dropdown */
+}
+
+.sort-dropdown span {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sort-dropdown span:hover {
+    background-color: #555; /* Hover effect */
+}
+
+/* Style for the selected option displayed beside "SORT BY" */
+.sort-by .selected-option {
+    color: #000000; /* Highlight color for the selected option */
+    margin-left: 5px;
+}
+.box:hover{
+    transform: scale(0.8);
+}
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header">
+            <h2>FILTER PAGE</h2>
+            <div class="nav-buttons">
+                <a href="HomeScreen.html"><button>Home</button></a>
+                <a href="item details.html"><button>Display</button></a>
+                <a href="Filters Page.html"><button>Filter</button></a>
+                <a href="restock.html"><button>Restock</button></a>
+                <a href="low_stock.html"><button>Low Stock</button></a>
+                <a href="profile.html"><button>Profile</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-row">
+        <span onclick="highlight(this)">MEN</span>
+        <span onclick="highlight(this)">WOMEN</span>
+        <span onclick="highlight(this)">GIRLS</span>
+        <span onclick="highlight(this)">BOYS</span>
+        <span onclick="highlight(this)">BABIES</span>
+    </div>
+    
+    <div class="subcategory-row">
+        <span onclick="highlight(this)">TOPWEAR</span>
+        <span onclick="highlight(this)">BOTTOMWEAR</span>
+        <span onclick="highlight(this)">DRESSES</span>
+        <span onclick="highlight(this)">OUTERWEAR</span>
+    </div>
+    <div class="divider1"></div>
+    
+    <div class="filter-container">
+        <div class="filter-row">
+            <span id="sizeFilter" onclick="toggleSizeDropdown()">Size ▼</span>
+            <div class="dropdown" id="sizeDropdown">
+                <span onclick="selectSize('Extra Small')">XS</span>
+                <span onclick="selectSize('Small')">S</span>
+                <span onclick="selectSize('Medium')">M</span>
+                <span onclick="selectSize('Large')">L</span>
+                <span onclick="selectSize('Extra Large')">XL</span>
+            </div> 
+            <span id="colorFilter" onclick="toggleColorDropdown()">Color ▼</span>
+            <div class="dropdown" id="colorDropdown">
+                <span onclick="selectColor('Red')">Red</span>
+                <span onclick="selectColor('Blue')">Blue</span>
+                <span onclick="selectColor('Yellow')">Yellow</span>
+                <span onclick="selectColor('Green')">Green</span>
+                <span onclick="selectColor('Black')">Black</span>
+                <span onclick="selectColor('White')">White</span>
+            </div>
+            <span id="priceFilter" onclick="togglePriceDropdown()">Price ▼</span>
+            <div class="dropdown" id="priceDropdown">
+                <span onclick="selectPrice('Top Selling')">Top Selling</span>
+                <span onclick="selectPrice('Price (High to Low)')">Price (High to Low)</span>
+                <span onclick="selectPrice('Price (Low to High)')">Price (Low to High)</span>
+                <span onclick="selectPrice('New Arrivals')">New Arrivals</span>
+                <span onclick="selectPrice('Best Rated')">Best Rated</span>
+                <span onclick="selectPrice('Discount')">Discount</span>
+            </div>
+        </div>
+
+        <!-- New SORT BY Dropdown -->
+        <div class="sort-by-container">
+    <div class="sort-by" onclick="toggleSortDropdown()">
+        SORT BY <span class="selected-option"></span> <span>▼</span>
+    </div>
+    <div class="sort-dropdown" id="sortDropdown">
+        <span onclick="selectSortOption('ON SALE')">On Sale</span>
+        <span onclick="selectSortOption('POPULARITY')">Popularity</span>
+        <span onclick="selectSortOption('NEWEST')">Newest</span>
+    </div>
+</div>
+    </div>
+
+    <div class="product-grid">
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe1.png" alt="Product 1" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe2.png" alt="Product 2" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe3.png" alt="Product 3" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe4.png" alt="Product 4" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+</div>
+
+    <div class="product-grid">
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe5.png" alt="Product 1" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\Luminoire1.jpg" alt="Product 2" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\Luminoire2.jpg" alt="Product 3" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\Luminoire3.jpg" alt="Product 4" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+</div>
+
+    <div class="product-grid">
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe1.png" alt="Product 1" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe2.png" alt="Product 2" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe3.png" alt="Product 3" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe4.png" alt="Product 4" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+</div>
+
+    <div class="product-grid">
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe1.png" alt="Product 1" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe2.png" alt="Product 2" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe3.png" alt="Product 3" class="product-box"> </div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+    <div>
+    <div class="box">
+        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe4.png" alt="Product 4" class="product-box"></div>
+        <div class="product-name">PRODUCT NAME</div>
+    </div>
+</div>
+
+    <div class="footer">
+        <div align="center">Clothing Store 2025</div>
+    </div>
+
+    <script>
+        // Highlight function for category and subcategory rows
+        function highlight(element) {
+            let parent = element.parentElement;
+            parent.querySelectorAll('span').forEach(span => {
+                span.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // Toggle dropdown
+        function toggleDropdown(dropdownId, filterElement) {
+            const dropdown = document.getElementById(dropdownId);
+            const filter = document.getElementById(dropdownId.replace('Dropdown', 'Filter'));
+
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                if (otherDropdown.id !== dropdownId) {
+                    otherDropdown.style.display = 'none'; // Hide the other dropdown
+                    const otherFilter = document.getElementById(otherDropdown.id.replace('Dropdown', 'Filter'));
+                    if (otherFilter) {
+                        otherFilter.innerHTML = otherFilter.innerHTML.replace('▲', '▼'); // Ensure arrow points down
+                    }
+                }
+            });
+
+            // Toggle the clicked dropdown
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+                filter.innerHTML = filter.innerHTML.replace('▲', '▼'); // Arrow points down when closed
+            } else {
+                dropdown.style.display = 'block';
+                filter.innerHTML = filter.innerHTML.replace('▼', '▲'); // Arrow points up when open
+            }
+        }
+
+        // Select option from dropdown
+        function selectOption(filterId, option) {
+            const filter = document.getElementById(filterId);
+            const dropdown = document.getElementById(filterId + 'Dropdown');
+
+            // Remove 'selected' class from all options
+            dropdown.querySelectorAll('span').forEach(span => {
+                span.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked option
+            const selectedOption = Array.from(dropdown.children).find(span => span.innerText === option || span.innerText === option.charAt(0));
+            if (selectedOption) {
+                selectedOption.classList.add('selected');
+            }
+
+            // Update the filter text and highlight the selected option
+            filter.innerHTML = `${filterId.replace('Filter', '')} <span class="selected-option">${option}</span> ▼`;
+            dropdown.style.display = 'none'; // Close the dropdown
+        }
+
+        // Toggle size dropdown
+        function toggleSizeDropdown() {
+            toggleDropdown('sizeDropdown', document.getElementById('sizeFilter'));
+        }
+
+        // Toggle color dropdown
+        function toggleColorDropdown() {
+            toggleDropdown('colorDropdown', document.getElementById('colorFilter'));
+        }
+
+        // Toggle price dropdown
+        function togglePriceDropdown() {
+            toggleDropdown('priceDropdown', document.getElementById('priceFilter'));
+        }
+
+        // Toggle sort dropdown
+        function toggleSortDropdown() {
+            toggleDropdown('sortDropdown', document.querySelector('.sort-by'));
+        }
+
+        // Select size from dropdown
+        function selectSize(size) {
+            const sizeFilter = document.getElementById('sizeFilter');
+            const sizeDropdown = document.getElementById('sizeDropdown');
+
+            // Remove 'selected' class from all size options
+            sizeDropdown.querySelectorAll('span').forEach(span => {
+                span.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked size option
+            const selectedSize = Array.from(sizeDropdown.children).find(span => span.innerText === size || span.innerText === size.charAt(0));
+            if (selectedSize) {
+                selectedSize.classList.add('selected');
+            }
+
+            // Update the filter text and highlight the selected size
+            sizeFilter.innerHTML = `Size <span class="selected-option">${size}</span> ▼`;
+            sizeDropdown.style.display = 'none'; // Close the dropdown
+        }
+
+        // Select color from dropdown
+        function selectColor(color) {
+            const colorFilter = document.getElementById('colorFilter');
+            const colorDropdown = document.getElementById('colorDropdown');
+
+            // Remove 'selected' class from all color options
+            colorDropdown.querySelectorAll('span').forEach(span => {
+                span.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked color option
+            const selectedColor = Array.from(colorDropdown.children).find(span => span.innerText === color || span.innerText === color.charAt(0));
+            if (selectedColor) {
+                selectedColor.classList.add('selected');
+            }
+
+            // Update the filter text and highlight the selected color
+            colorFilter.innerHTML = `Color <span class="selected-option">${color}</span> ▼`;
+            colorDropdown.style.display = 'none'; // Close the dropdown
+        }
+
+        // Select price from dropdown
+        function selectPrice(price) {
+            const priceFilter = document.getElementById('priceFilter');
+            const priceDropdown = document.getElementById('priceDropdown');
+
+            // Remove 'selected' class from all price options
+            priceDropdown.querySelectorAll('span').forEach(span => {
+                span.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked price option
+            const selectedPrice = Array.from(priceDropdown.children).find(span => span.innerText === price || span.innerText === price.charAt(0));
+            if (selectedPrice) {
+                selectedPrice.classList.add('selected');
+            }
+
+            // Update the filter text and highlight the selected price
+            priceFilter.innerHTML = `Price <span class="selected-option">${price}</span> ▼`;
+            priceDropdown.style.display = 'none'; // Close the dropdown
+        }
+
+        // Select sort option from dropdown
+        function selectSortOption(option) {
+    const sortByText = document.querySelector('.sort-by .selected-option');
+    const sortDropdown = document.getElementById('sortDropdown');
+
+    // Update the selected option text
+    sortByText.textContent = option;
+
+    // Close the dropdown
+    sortDropdown.style.display = 'none';
+
+    // Update the arrow
+    document.querySelector('.sort-by span:last-child').innerHTML = '▼';
+}
+
+// Toggle sort dropdown
+function toggleSortDropdown() {
+    const sortDropdown = document.getElementById('sortDropdown');
+    const sortByArrow = document.querySelector('.sort-by span:last-child');
+
+    // Close all other dropdowns
+    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+        if (otherDropdown.id !== 'sortDropdown') {
+            otherDropdown.style.display = 'none';
+        }
+    });
+
+    // Toggle the clicked sort dropdown
+    if (sortDropdown.style.display === 'block') {
+        sortDropdown.style.display = 'none';
+        sortByArrow.innerHTML = '▼'; // Arrow points down when closed
+    } else {
+        sortDropdown.style.display = 'block';
+        sortByArrow.innerHTML = '▲'; // Arrow points up when open
+    }
+}
+    </script>
+
+</body>
+</html>
