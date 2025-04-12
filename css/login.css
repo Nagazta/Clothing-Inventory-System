@@ -1,105 +1,187 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: linear-gradient(to right, #1c5253, #0f2e2f);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .login-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 900px;
-    width: 100%;
-  }
-  
-  .login-image img {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  }
-  
-  
-  .login-container {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 2rem;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  }
-  
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #c3eb78;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  input {
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-    border: none;
-    border-radius: 8px;
-    background: #f5f5f5;
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  input:focus {
-    outline: none;
-    border: 2px solid #c3eb78;
-  }
-  
-  button {
-    background-color: #c3eb78;
-    color: #1c5253;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #1c5253;
-    color: #c3eb78;
-  }
-  
-  .register {
-    display: block;
-    margin-top: 1.5rem;
-    text-align: center;
-    color: #c3eb78;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .register:hover {
-    color: #ffffff;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#header {
+  background: #c3eb78;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #a27676;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+#header h1 a {
+  color: #413028;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#nav ul li a {
+  color: #413028;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+#nav ul li a:hover {
+  background: #1c5253;
+  color: #c3eb78;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url('../assets/wallpaper/Apparel.jpg') no-repeat center center/cover;
+  filter: blur(5px) brightness(0.4);
+  z-index: -1;
+}
+
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.login-image img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.login-container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #c3eb78;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #f5f5f5;
+  font-size: 1rem;
+  color: #333;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #c3eb78;
+}
+
+button {
+  background-color: #c3eb78;
+  color: #1c5253;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1c5253;
+  color: #c3eb78;
+}
+
+.register {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #c3eb78;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.register:hover {
+  color: #ffffff;
+}
+#footer {
+  background: #c3eb78;
+  color: #1c5253;
+  text-align: center;
+  padding: 2rem;
+}
+
+#footer .icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+

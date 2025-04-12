@@ -1,60 +1,20 @@
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ffffff;
-    line-height: 1.6;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  
-  #header {
-    background: #c3eb78;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    color: #a27676;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  #header h1 a {
-    color: #413028;
-    font-size: 1.5rem;
-    font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  }
-  
-  #nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  #nav ul li a {
-    color: #413028;
-    font-weight: 500;
-    padding: 0.5rem 0.75rem;
-    border-radius: 12px;
-  }
-  
-  #nav ul li a:hover {
-    background: #1c5253;
-    transition: 0.5s;
-    color: #c3eb78;
-  }
+
+
+body {
+  display: block; 
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1c5253;
+  color: white;
+}
+
   
   #banner {
     position: relative;
@@ -122,6 +82,7 @@
   
   section.wrapper {
     padding: 4rem 2rem;
+    background-color: #515151;
   }
   
   .wrapper.style1 {
@@ -138,33 +99,14 @@
     padding: 2rem 0;
     gap: 2rem;
     border-bottom: 1px solid #ccc;
+    
   }
   
   .spotlight .content {
     flex: 1 1 300px;
-    color : #1c5253
+    color : #ffffff
   }
 
-  #footer {
-    background: #c3eb78;
-    color: #1c5253;
-    text-align: center;
-    padding: 2rem;
-  }
   
-  #footer .icons {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  #footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
-    font-size: 0.9rem;
-  }
 
   

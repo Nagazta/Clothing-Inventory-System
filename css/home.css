@@ -1,0 +1,157 @@
+body {
+    background-color: #A9B5DF;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #c3eb78;
+    color: #1c5253;
+    padding: 10px 0;
+  }
+  
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid black;
+  }
+  
+  .header-container h1 {
+    margin: 10px 0;
+    font-size: 28px;
+    text-align: center;
+  }
+  .report-section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .report-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .report-box {
+    background-color: #f2f2f2;
+    border: 2px solid #2D336B;
+    border-radius: 12px;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .report-box h4 {
+    color: #2D336B;
+    margin-bottom: 10px;
+  }
+  
+  .report-box p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .stock-details-section {
+    padding: 30px;
+    margin-top: 20px;
+  }
+  
+  .stock-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    border: 2px solid #2D336B;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .stock-table th,
+  .stock-table td {
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .stock-table th {
+    background-color: #2D336B;
+    color: white;
+  }
+  
+  
+  .add-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #2D336B;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .add-btn:hover {
+    background-color: #1a1f4e;
+  }
+  
+  
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: #1c5253;
+    color: #c3eb78;
+    border: 2px solid black;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #c3eb78;
+    color: #1c5253;
+  }
+  
+  .main-wrapper {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .welcome-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  #footer {
+    background: #c3eb78;
+    color: #1c5253;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    bottom: 0;
+  }
+  
+  #footer .icons {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  #footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+   
+  }
+  
+  

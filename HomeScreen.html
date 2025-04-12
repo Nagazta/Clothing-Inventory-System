@@ -1,80 +1,76 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Home Screen</title>
-    <style>
-        body {
-            background-color: #A9B5DF;
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            background-color: #2D336B;
-            color: white;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 2px solid black;
-        }
-
-        footer {
-            position: fixed;
-            background-color: #2D336B;
-            width: 97%;
-            color: white;
-            text-align: center;
-            padding: 10px 20px;
-            bottom: 0;
-        }
-
-        button {
-            border-radius: 8px;
-            margin-right: 10px;
-            width: 120px;
-            height: 50px;
-            padding: 8px 12px;
-            border: 2px solid black;
-            background: #A9B5DF;
-            cursor: pointer;
-        }
-
-            button:hover {
-                background: #ffffff;
-                transition: 0.3s;
-            }
-
-        h2 {
-            font-size: 30px;
-        }
-
-        
-
-           
-    </style>
+  <meta charset="utf-8" />
+  <title>Home Screen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Clothing Inventory System</h1>
-            <nav>
-                <a href="HomeScreen.html"><button>Home</button></a>
-                <a href="item details.html"><button>Display</button></a>
-                <a href="Filters Page.html"><button>Filter</button></a>
-                <a href="restock.html"><button>Restock</button></a>
-                <a href="low_stock.html"><button>Low Stock</button></a>
-                <a href="profile.html"><button>Profile</button></a>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="header-container">
+      <h1>Clothify - Clothing Inventory System</h1>
+      <nav>
+        <a href="HomeScreen.html"><button>Home</button></a>
+        <a href="Filters Page.html"><button>Filter</button></a>
+        <a href="profile.html"><button>Profile</button></a>
+        <button id="logoutBtn">Logout</button>
+      </nav>
+    </div>
+  </header>
 
-    <footer>
-        <p>CLOTHING STORE 2025</p>
-    </footer>
+  <main class="main-wrapper">
+    <section class="welcome-section">
+      <h2>Welcome, <span id="usernameDisplay">User</span>!</h2>
+      <p>Select a function from the navigation bar above to get started.</p>
+    </section>
+
+    <section class="report-section">
+      <h3>Dashboard Overview</h3>
+      <div class="report-boxes">
+        <div class="report-box">
+          <h4>New Items</h4>
+          <p id="newItemsCount">0</p>
+        </div>
+        <div class="report-box">
+          <h4>Need of Stock</h4>
+          <p id="needStockCount">0</p>
+        </div>
+        <div class="report-box">
+          <h4>Add New Item</h4>
+          <a href="add_item.html"><button class="add-btn">Add</button></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section class="stock-details-section">
+    <h3>Items Needing Restock</h3>
+    <table class="stock-table">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Stock Left</th>
+          <th>Recommended Order</th>
+        </tr>
+      </thead>
+      <tbody id="stockTableBody">
+        <!-- JS will populate this -->
+      </tbody>
+    </table>
+  </section>
+  
+
+  <footer id="footer">
+    <ul class="icons">
+      <li><span class="label">Facebook</span></li>
+      <li><span class="label">Instagram</span></li>
+      <li><span class="label">Email</span></li>
+    </ul>
+    <ul class="copyright">
+      <li>&copy; Clothing Inventory 2025</li>
+    </ul>
+  </footer>
+
+  <script src="js/home.js"></script>
 </body>
 </html>
