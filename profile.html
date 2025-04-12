@@ -99,6 +99,7 @@
 </head>
 <body>
     <header>
+        <!--Navigation Section-->
         <div class="header-container">
             <h1>PROFILE</h1>
             <nav>
@@ -111,41 +112,87 @@
             </nav>
         </div>
     </header>
+    <!--Profile Section-->
     <div class = "profile-container">
         <H2>Kyle Sepulveda</H2>
         <h2> Nagz-22-20</h2>
         <label for="Uname">Username</label> <br>
         <input type="text" id="Uname" name="Uname" value="Nagz-22-20"> <br>
         <label for="Fname">Full name</label> <br>
-        <input typpe ="text" id "fname" name = "fname" value = "Kyle Sepulveda"> <br>
+        <input type ="text" id="fname" name = "fname" value = "Kyle Sepulveda"> <br>
         <label for = "email">Email</label> <br>
         <input type = "text" id = "email" name = "email" value = "kyle.sepulveda27@gmail.com"> <br>
         <button>Edit Profile</button>
     </div>
     <hr>
-    <div class = "password-container">
-        <h2> Change Password</h2>
-        <label for = "Cpasswrod"> Current Password</label><br>
-        <input type = "password" id = "Cpassword" name = "Cpassword"> <br>
-        <label for = "Npassword"> New Password</label><br>
-        <input type = "password" id = "Npassword" name = "Npassword"> <br>
-        <label for = "Rpassword"> Retype Password</label><br>
-        <input type = "password" id = "Rpassword" name = "Rpassword"> <br>
-        <button>Change Password</button>
-    </div>
- 
+     <!--Password Section-->
+    <form id = "passwordForm">
+        <div class = "password-container">
+            <h2> Change Password</h2>
+            <label for = "Cpassword"> Current Password</label><br>
+            <input type = "password" id = "Cpassword" name = "Cpassword"> <br>
+            <label for = "Npassword"> New Password</label><br>
+            <input type = "password" id = "Npassword" name = "Npassword"> <br>
+            <label for = "Rpassword"> Retype Password</label><br>
+            <input type = "password" id = "Rpassword" name = "Rpassword"> <br>
+            <button>Change Password</button>
+        </div>
+    </form>
+   
     
-    
-
-
-
-
-
-
 <footer>
     <p>CLOTHING STORE 2025</p>
 </footer>
 
+<script>
+    //Change Password
+    function changePassword() {
+        document.getElementById("passwordForm").addEventListener("submit", function (event) {
+            event.preventDefault(); 
+
+            let CurrentPass = document.getElementById("Cpassword").value;
+            let NewPass = document.getElementById("Npassword").value;
+            let RetypePass = document.getElementById("Rpassword").value;
+
+            // Retrieve user data from localStorage
+            let storedUserData = JSON.parse(localStorage.getItem("user"));
+
+            // Check if user exists
+            if (!storedUserData) {
+                alert("No registered user found. Please register first.");
+                return;
+            }
+
+            let storedPassword = storedUserData.password;
+
+            // Validate password change
+            if (CurrentPass !== storedPassword) {
+                alert("Current Password is incorrect!");
+                return;
+            }
+            if (NewPass === CurrentPass) {
+                alert("New Password cannot be the same as the old password.");
+                return;
+            }
+            if (NewPass.length < 6) {
+                alert("New Password must be at least 6 characters long!");
+                return;
+            }
+            if (NewPass !== RetypePass) {
+                alert("New Password and Retyped Password do not match!");
+                return;
+            }
+
+            // Update password in localStorage
+            storedUserData.password = NewPass;
+            localStorage.setItem("user", JSON.stringify(storedUserData));
+
+            alert("Password has been changed successfully!");
+        });
+    }
+
+    changePassword();
+</script>
 
     
 </body>

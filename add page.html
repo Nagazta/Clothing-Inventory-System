@@ -6,59 +6,58 @@
     <title>Add Page</title>
     <style>
         body {
-            margin: 0;
+            background-color: #A9B5DF;
             font-family: Arial, sans-serif;
-            background-color: #A1B0E0;
         }
-        .header-container {
-            background-color: #A1B0E0;
-            padding: 10px;
-        }
-        .header {
-            background-color: #2E3B79;
+
+        header {
+            background-color: #2D336B;
             color: white;
-            padding: 20px;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
+            padding: 10px 20px;
+            border-bottom: 2px solid black;
         }
-        .footer {
-            background-color: #2E3B79;
+
+        footer {
+            background-color: #2D336B;
+            width: 97%;
             color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
+            text-align: center;
+            padding: 10px 20px;
+            bottom: 0;
         }
-        .header h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-buttons button {
-            background-color: #A1B0E0;
-            border: 1px solid black;
-            padding: 10px 15px;
+
+        button {
+            border-radius: 8px;
+            margin-right: 10px;
+            width: 120px;
+            height: 50px;
+            padding: 8px 12px;
+            border: 2px solid black;
+            background: #A9B5DF;
             cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
         }
+
+            button:hover {
+                background: #ffffff;
+                transition: 0.3s;
+            }
+
+        h2 {
+            font-size: 30px;
+        }
+
         .container {
             display: flex;
             gap: 20px;
             padding: 20px;
         }
+
         .upload-container {
             background-color: white;
             width: 250px;
@@ -74,44 +73,52 @@
             position: relative;
             overflow: hidden;
         }
-        .upload-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .upload-container input {
-            display: none;
-        }
+
+            .upload-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .upload-container input {
+                display: none;
+            }
+
         .product-info {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        .product-info label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .product-info input {
-            padding: 8px;
-            width: 200px;
-            border: 1px solid #2E3B79;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+
+            .product-info label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .product-info input {
+                padding: 8px;
+                width: 200px;
+                border: 1px solid #2E3B79;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
         .product-info1 {
             font-size: 18px;
             font-weight: bold;
             margin-top: 20px;
         }
+
         .size-selection {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .size-option {
             width: 30px;
             height: 30px;
@@ -125,25 +132,30 @@
             background-color: white;
             font-size: 12px;
         }
-        .size-option.selected {
-            background-color: green;
-            color: white;
-        }
+
+            .size-option.selected {
+                background-color: green;
+                color: white;
+            }
+
         .divider1 {
             width: 100%;
             height: 2px;
             background-color: black;
             margin: 10px auto;
         }
+
         .details-container {
             text-align: center;
             margin-top: 20px;
             padding: 20px;
         }
+
         .details-title {
             font-size: 20px;
             font-weight: bold;
         }
+
         .details-box {
             width: 97%;
             height: 150px;
@@ -157,84 +169,137 @@
             overflow-y: auto;
             color: black;
         }
+
         .placeholder {
             color: rgba(0, 0, 0, 0.5);
         }
+
         .additional-details {
             display: flex;
             justify-content: space-between;
             padding: 20px;
             gap: 20px;
         }
+
         .additional-details-box {
             width: 48%;
             text-align: center;
             padding: 20px;
         }
-        .additional-details-box .details-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
+
+            .additional-details-box .details-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .additional-details-box .details-box {
+                width: 100%;
+                height: 150px;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 10px;
+                background-color: white;
+                font-size: 16px;
+                resize: none;
+                overflow-y: auto;
+            }
+
+        .profile-container {
+            width: 40%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.7;
+            margin-left: 20px;
         }
-        .additional-details-box .details-box {
-            width: 100%;
-            height: 150px;
-            border: 2px solid black;
-            border-radius: 5px;
-            padding: 10px;
-            background-color: white;
-            font-size: 16px;
-            resize: none;
-            overflow-y: auto;
-        }
+
+            .profile-container label {
+                font-size: 25px;
+            }
+
+            .profile-container input {
+                width: 40%;
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 15px;
+            }
+
+            .profile-container button {
+                margin-top: 20px;
+                background-color: #2E3B79;
+                color: white;
+                font-size: 18px;
+                border-radius: 8px;
+                border: 2px solid #2E3B79;
+                cursor: pointer;
+                padding: 10px 15px;
+                width: 100%;
+            }
+
+                .profile-container button:hover {
+                    background-color: #A9B5DF;
+                    color: black;
+                    transition: 0.3s;
+                }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="header">
-            <h2>ADD NEW ITEM</h2>
-            <div class="nav-buttons">
-                <button>Home</button>
-                <button>Display</button>
-                <button>Filter</button>
-                <button>Restock</button>
-                <button>Low Stock</button>
-                <button>Profile</button>
-            </div>
+    <header>
+        <div class="header-container">
+            <h1>ADD PRODUCT</h1>
+            <nav>
+                <a href="HomeScreen.html"><button>Home</button></a>
+                <a href="item details.html"><button>Display</button></a>
+                <a href="Filters Page.html"><button>Filter</button></a>
+                <a href="restock.html"><button>Restock</button></a>
+                <a href="low_stock.html"><button>Low Stock</button></a>
+                <a href="profile.html"><button>Profile</button></a>
+            </nav>
         </div>
-    </div>
-    
+    </header>
+
     <div class="container">
         <div class="upload-container" onclick="document.getElementById('fileInput').click();">
             <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
             <span id="uploadText">UPLOAD IMAGE</span>
             <img id="preview" alt="Uploaded Image">
         </div>
-        
-        <div class="product-info">
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" placeholder="Enter product name">
-            
-            <label for="productQuantity">Quantity:</label>
-            <input type="number" id="productQuantity" placeholder="Enter quantity">
-            
-            <div class="size-selection">
-                <label for="productSizes">Sizes:</label>
-                <div class="size-option" onclick="toggleSize(this)">XS</div>
-                <div class="size-option" onclick="toggleSize(this)">S</div>
-                <div class="size-option" onclick="toggleSize(this)">M</div>
-                <div class="size-option" onclick="toggleSize(this)">L</div>
-                <div class="size-option" onclick="toggleSize(this)">XL</div>
+
+        <div class="profile-container">
+            <div class="product-info">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" placeholder="Enter product name">
+
+                <label for="productQuantity">Quantity:</label>
+                <input type="number" id="productQuantity" placeholder="Enter quantity">
+
+                <div class="size-selection">
+                    <label for="productSizes">Sizes:</label>
+                    <div class="size-option" onclick="toggleSize(this)">XS</div>
+                    <div class="size-option" onclick="toggleSize(this)">S</div>
+                    <div class="size-option" onclick="toggleSize(this)">M</div>
+                    <div class="size-option" onclick="toggleSize(this)">L</div>
+                    <div class="size-option" onclick="toggleSize(this)">XL</div>
+                </div>
             </div>
+
+            <!-- Submit Button -->
+            <button onclick="submitForm()">Submit</button>
         </div>
     </div>
-    <div class="product-info1" style="margin-left: 20px; margin-right: 20px;">PRODUCT DESCRIPTION
-    <div class="divider1"></div>
+
+    <div class="product-info1" style="margin-left: 20px; margin-right: 20px;">
+        PRODUCT DESCRIPTION
+        <div class="divider1"></div>
     </div>
+
     <div class="details-container">
         <div class="details-title">DETAILS</div>
         <div class="details-box placeholder" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter product details here...')">Enter product details here...</div>
-    
+
         <div class="additional-details">
             <div class="additional-details-box">
                 <div class="details-title">Content and Care</div>
@@ -246,15 +311,16 @@
             </div>
         </div>
     </div>
+
     <script>
         function previewImage(event) {
             const file = event.target.files[0];
             const preview = document.getElementById('preview');
             const uploadText = document.getElementById('uploadText');
-            
+
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     preview.src = e.target.result;
                     preview.style.display = 'block';
                     uploadText.style.display = 'none';
@@ -282,9 +348,30 @@
                 element.classList.add('placeholder');
             }
         }
+
+        function submitForm() {
+            // Collect data and display a confirmation message (you can expand this with actual form submission)
+            const productName = document.getElementById('productName').value;
+            const productQuantity = document.getElementById('productQuantity').value;
+            const productSizes = [];
+            const sizeOptions = document.querySelectorAll('.size-option.selected');
+            sizeOptions.forEach(option => {
+                productSizes.push(option.innerText);
+            });
+
+            if (productName && productQuantity && productSizes.length > 0) {
+                alert('Product submitted successfully!\n\n' +
+                    'Product Name: ' + productName + '\n' +
+                    'Quantity: ' + productQuantity + '\n' +
+                    'Sizes: ' + productSizes.join(', '));
+            } else {
+                alert('Please fill in all fields before submitting.');
+            }
+        }
     </script>
-    <div class="footer">
-        <div align="center">Clothing Store 2025</div>
-    </div>
+
+    <footer>
+        <p>CLOTHING STORE 2025</p>
+    </footer>
 </body>
 </html>

@@ -5,55 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filter Page</title>
     <style>
-        /* Your existing styles here */
         body {
-            margin: 0;
+            background-color: #A9B5DF;
             font-family: Arial, sans-serif;
-            background-color: #A1B0E0;
         }
-        .header-container {
-            background-color: #A1B0E0;
-            padding: 10px;
-        }
-        .header {
-            background-color: #2E3B79;
+
+        header {
+            background-color: #2D336B;
             color: white;
-            padding: 20px;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
+            padding: 10px 20px;
+            border-bottom: 2px solid black;
         }
-        .footer {
-            background-color: #2E3B79;
+
+        footer {
+            background-color: #2D336B;
+            width: 97%;
             color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
+            text-align: center;
+            padding: 10px 20px;
+            bottom: 0;
         }
-        .header h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-buttons button {
-            background-color: #A1B0E0;
-            border: 1px solid black;
-            padding: 10px 15px;
+
+
+        button {
+            border-radius: 8px;
+            margin-right: 10px;
+            width: 120px;
+            height: 50px;
+            padding: 8px 12px;
+            border: 2px solid black;
+            background: #A9B5DF;
             cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
+        }
+
+            button:hover {
+                background: #ffffff;
+                transition: 0.3s;
+            }
+
+        h2 {
+            font-size: 30px;
         }
         .category-row {
             display: flex;
@@ -72,7 +69,7 @@
             font-weight: bold;
         }
         .filter-container {
-            max-width: 1000px; /* Adjusted max-width */
+            max-width: 1000px;
             margin: 0 auto;
             padding: 15px;
             text-align: center;
@@ -87,7 +84,7 @@
             border-radius: 5px;
             padding: 10px 20px;
             margin-bottom: 10px;
-            position: relative; /* For positioning the dropdowns */
+            position: relative; 
         }
         .filter-row span {
             cursor: pointer;
@@ -97,7 +94,7 @@
         .sort-by-container {
     text-align: right;
     padding-right: 20px;
-    position: relative; /* Ensures the dropdown is positioned relative to this container */
+    position: relative; 
 }
 
 .sort-by {
@@ -106,7 +103,7 @@
     color: #000000;
     cursor: pointer;
     display: inline-block;
-    position: relative; /* For positioning the dropdown */
+    position: relative; 
 }
 
 .sort-by span {
@@ -117,32 +114,32 @@
             padding: 5px 10px;
             border-radius: 5px;
         }
-        .category-row span.active, .subcategory-row span.active {
-            color: #2E3B79;
-        }
+            .category-row span.active, .subcategory-row span.active {
+                color: #2D336B;
+            }
         .divider1 {
-            width: 1100px; /* Adjusted width */
+            width: 1100px; 
             height: 2px;
             background-color: black;
             margin: 10px auto;
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            grid-template-columns: repeat(4, 1fr); 
             gap: 20px;
-            max-width: 1000px; /* Adjusted max-width */
+            max-width: 1000px; 
             margin: 20px auto;
             text-align: center;
         }
         .product-box {
-    width: 200px; /* Adjusted width */
-    height: 170px; /* Adjusted height */
+    width: 200px; 
+    height: 170px; 
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
-    object-fit: cover; /* Ensures the image covers the box without stretching */
-    display: block; /* Ensures the image behaves like a block element */
-    margin: 0 auto; /* Centers the image horizontally */
+    object-fit: cover; 
+    display: block; 
+    margin: 0 auto; 
 }
         .product-name {
     margin-top: 10px;
@@ -150,17 +147,17 @@
     text-align: left;
 }
 
-        /* Dropdown styles */
+       
         .dropdown {
-            display: none; /* Hidden by default */
+            display: none; 
             position: absolute;
-            top: 100%; /* Position below the filter row */
+            top: 100%; 
             background-color: white;
             border: 1px solid #2E3B79;
             border-radius: 5px;
             padding: 10px;
             z-index: 10;
-            width: 150px; /* Adjust width as needed */
+            width: 150px; 
         }
         .dropdown span {
             display: block;
@@ -170,29 +167,29 @@
             color: #2E3B79;
         }
         .dropdown span.selected {
-            background-color: #2E3B79; /* Background for selected option */
-            color: white; /* Text color for selected option */
+            background-color: #2E3B79; 
+            color: white; 
         }
         .dropdown span:hover {
             background-color: #f0f0f0;
         }
-        /* Highlight selected option in filter row */
+     
         .filter-row .selected-option {
-            color: #2E3B79; /* Text color for selected option in filter row */
+            color: #2E3B79; 
         }
 
         .sort-dropdown {
-    display: none; /* Hidden by default */
-    position: absolute; /* Position absolutely within the container */
-    top: 100%; /* Position below the "SORT BY" text */
-    right: 0; /* Align with the right edge of the container */
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    width: 150px; /* Fixed width */
-    z-index: 10;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    text-align: center; /* Center the text inside the dropdown */
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            right: 0; 
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            width: 150px; 
+            z-index: 10;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+            text-align: center; 
 }
 
 .sort-dropdown span {
@@ -203,33 +200,73 @@
 }
 
 .sort-dropdown span:hover {
-    background-color: #555; /* Hover effect */
+    background-color: #555; 
 }
 
-/* Style for the selected option displayed beside "SORT BY" */
+
 .sort-by .selected-option {
-    color: #000000; /* Highlight color for the selected option */
+    color: #000000; 
     margin-left: 5px;
 }
 .box:hover{
     transform: scale(0.8);
 }
+        .profile-container {
+            margin: 20px auto;
+            width: 500%; 
+            max-width: 1150px; 
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.7;
+        }
+
+            .profile-container label {
+                font-size: 25px;
+            }
+
+            .profile-container input {
+                width: 40%;
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 15px;
+            }
+
+            .profile-container button {
+                margin-top: 20px;
+            }
+        .submit-button {
+            border-radius: 8px;
+            margin-right: auto; 
+            width: 120px;
+            height: 50px;
+            padding: 8px 12px;
+            border: 2px solid black;
+            background: #FFFFFF;
+            cursor: pointer;
+        }
+            .submit-button:hover {
+                background: #2D336B;
+                transition: 0.3s;
+                color: white;
+            }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="header">
-            <h2>FILTER PAGE</h2>
-            <div class="nav-buttons">
+    <header>
+        <div class="header-container">
+            <h1>FILTER</h1>
+            <nav>
                 <a href="HomeScreen.html"><button>Home</button></a>
                 <a href="item details.html"><button>Display</button></a>
                 <a href="Filters Page.html"><button>Filter</button></a>
                 <a href="restock.html"><button>Restock</button></a>
                 <a href="low_stock.html"><button>Low Stock</button></a>
                 <a href="profile.html"><button>Profile</button></a>
-            </div>
+            </nav>
         </div>
-    </div>
+    </header>
 
     <div class="category-row">
         <span onclick="highlight(this)">MEN</span>
@@ -238,7 +275,7 @@
         <span onclick="highlight(this)">BOYS</span>
         <span onclick="highlight(this)">BABIES</span>
     </div>
-    
+
     <div class="subcategory-row">
         <span onclick="highlight(this)">TOPWEAR</span>
         <span onclick="highlight(this)">BOTTOMWEAR</span>
@@ -246,7 +283,7 @@
         <span onclick="highlight(this)">OUTERWEAR</span>
     </div>
     <div class="divider1"></div>
-    
+
     <div class="filter-container">
         <div class="filter-row">
             <span id="sizeFilter" onclick="toggleSizeDropdown()">Size ▼</span>
@@ -256,7 +293,7 @@
                 <span onclick="selectSize('Medium')">M</span>
                 <span onclick="selectSize('Large')">L</span>
                 <span onclick="selectSize('Extra Large')">XL</span>
-            </div> 
+            </div>
             <span id="colorFilter" onclick="toggleColorDropdown()">Color ▼</span>
             <div class="dropdown" id="colorDropdown">
                 <span onclick="selectColor('Red')">Red</span>
@@ -279,112 +316,132 @@
 
         <!-- New SORT BY Dropdown -->
         <div class="sort-by-container">
-    <div class="sort-by" onclick="toggleSortDropdown()">
-        SORT BY <span class="selected-option"></span> <span>▼</span>
+            <div class="sort-by" onclick="toggleSortDropdown()">
+                SORT BY <span class="selected-option"></span> <span>▼</span>
+            </div>
+            <div class="sort-dropdown" id="sortDropdown">
+                <span onclick="selectSortOption('ON SALE')">On Sale</span>
+                <span onclick="selectSortOption('POPULARITY')">Popularity</span>
+                <span onclick="selectSortOption('NEWEST')">Newest</span>
+            </div>
+        </div>
+        <button class="submit-button" onclick="submitFilters()"><b>SUBMIT</b></button> <!-- New Submit Button -->
     </div>
-    <div class="sort-dropdown" id="sortDropdown">
-        <span onclick="selectSortOption('ON SALE')">On Sale</span>
-        <span onclick="selectSortOption('POPULARITY')">Popularity</span>
-        <span onclick="selectSortOption('NEWEST')">Newest</span>
-    </div>
-</div>
     </div>
 
     <div class="product-grid">
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe1.png" alt="Product 1" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe1.png" alt="Product 1" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe2.png" alt="Product 2" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe3.png" alt="Product 3" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe4.png" alt="Product 4" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
     </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe2.png" alt="Product 2" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe3.png" alt="Product 3" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe4.png" alt="Product 4" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-</div>
 
     <div class="product-grid">
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe5.png" alt="Product 1" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe5.png" alt="Product 1" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\Luminoire1.jpg" alt="Product 2" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\Luminoire2.jpg" alt="Product 3" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\Luminoire3.jpg" alt="Product 4" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
     </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\Luminoire1.jpg" alt="Product 2" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\Luminoire2.jpg" alt="Product 3" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\Luminoire3.jpg" alt="Product 4" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-</div>
 
     <div class="product-grid">
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe1.png" alt="Product 1" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe1.png" alt="Product 1" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe2.png" alt="Product 2" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe3.png" alt="Product 3" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe4.png" alt="Product 4" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
     </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe2.png" alt="Product 2" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe3.png" alt="Product 3" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe4.png" alt="Product 4" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-</div>
 
     <div class="product-grid">
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe1.png" alt="Product 1" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\clothe5.png" alt="Product 1" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\Luminoire1.jpg" alt="Product 2" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\Luminoire2.jpg" alt="Product 3" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
+        <div>
+            <div class="box">
+                <img src="clothes-images\Luminoire3.jpg" alt="Product 4" class="product-box">
+            </div>
+            <div class="product-name">PRODUCT NAME</div>
+        </div>
     </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe2.png" alt="Product 2" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe3.png" alt="Product 3" class="product-box"> </div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-    <div>
-    <div class="box">
-        <img src="E:\ethemele\Clothing Inventory System\Clothing Inventory System\clothes-images\clothe4.png" alt="Product 4" class="product-box"></div>
-        <div class="product-name">PRODUCT NAME</div>
-    </div>
-</div>
 
-    <div class="footer">
-        <div align="center">Clothing Store 2025</div>
     </div>
+
+    <footer>
+        <p>CLOTHING STORE 2025</p>
+    </footer>
 
     <script>
         // Highlight function for category and subcategory rows
@@ -528,40 +585,47 @@
 
         // Select sort option from dropdown
         function selectSortOption(option) {
-    const sortByText = document.querySelector('.sort-by .selected-option');
-    const sortDropdown = document.getElementById('sortDropdown');
+            const sortByText = document.querySelector('.sort-by .selected-option');
+            const sortDropdown = document.getElementById('sortDropdown');
 
-    // Update the selected option text
-    sortByText.textContent = option;
+            // Update the selected option text
+            sortByText.textContent = option;
 
-    // Close the dropdown
-    sortDropdown.style.display = 'none';
+            // Close the dropdown
+            sortDropdown.style.display = 'none';
 
-    // Update the arrow
-    document.querySelector('.sort-by span:last-child').innerHTML = '▼';
-}
-
-// Toggle sort dropdown
-function toggleSortDropdown() {
-    const sortDropdown = document.getElementById('sortDropdown');
-    const sortByArrow = document.querySelector('.sort-by span:last-child');
-
-    // Close all other dropdowns
-    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
-        if (otherDropdown.id !== 'sortDropdown') {
-            otherDropdown.style.display = 'none';
+            // Update the arrow
+            document.querySelector('.sort-by span:last-child').innerHTML = '▼';
         }
-    });
 
-    // Toggle the clicked sort dropdown
-    if (sortDropdown.style.display === 'block') {
-        sortDropdown.style.display = 'none';
-        sortByArrow.innerHTML = '▼'; // Arrow points down when closed
-    } else {
-        sortDropdown.style.display = 'block';
-        sortByArrow.innerHTML = '▲'; // Arrow points up when open
-    }
-}
+        // Toggle sort dropdown
+        function toggleSortDropdown() {
+            const sortDropdown = document.getElementById('sortDropdown');
+            const sortByArrow = document.querySelector('.sort-by span:last-child');
+
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                if (otherDropdown.id !== 'sortDropdown') {
+                    otherDropdown.style.display = 'none';
+                }
+            });
+
+            // Toggle the clicked sort dropdown
+            if (sortDropdown.style.display === 'block') {
+                sortDropdown.style.display = 'none';
+                sortByArrow.innerHTML = '▼'; // Arrow points down when closed
+            } else {
+                sortDropdown.style.display = 'block';
+                sortByArrow.innerHTML = '▲'; // Arrow points up when open
+            }
+        }
+        // Function for submitting the filters
+        function submitFilters() {
+            alert("Filters Submitted!");
+            // You can add more logic to process the selected filters and apply them to the product grid
+        }
+
+
     </script>
 
 </body>

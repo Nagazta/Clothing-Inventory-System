@@ -6,138 +6,149 @@
     <title>Item Details</title>
     <style>
         body {
-            margin: 0;
+            background-color: #A9B5DF;
             font-family: Arial, sans-serif;
-            background-color: #A1B0E0;
         }
-        .header-container {
-            background-color: #A1B0E0;
-            padding: 10px;
-        }
-        .header {
-            background-color: #2E3B79;
+
+        header {
+            background-color: #2D336B;
             color: white;
-            padding: 20px;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
+            padding: 10px 20px;
+            border-bottom: 2px solid black;
         }
-        .footer {
-            background-color: #2E3B79;
+
+        footer {
+            background-color: #2D336B;
+            width: 97%;
             color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 20px;
-            font-weight: bold;
+            text-align: center;
+            padding: 10px 20px;
+            bottom: 0;
         }
-        .header h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-buttons button {
-            background-color: #A1B0E0;
-            border: 1px solid black;
-            padding: 10px 15px;
+
+        button {
+            border-radius: 8px;
+            margin-right: 10px;
+            width: 120px;
+            height: 50px;
+            padding: 8px 12px;
+            border: 2px solid black;
+            background: #A9B5DF;
             cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
         }
+
+            button:hover {
+                background: #ffffff;
+                transition: 0.3s;
+            }
+
+        h2 {
+            font-size: 30px;
+        }
+
         .content {
             display: flex;
             align-items: flex-start;
             padding: 20px;
+            justify-content: flex-start; /* Align items to the start (left) */
         }
+
         .image-container {
             padding-right: 20px;
         }
-        .image-container img {
-            width: 300px;
-            height: auto;
-            border: 2px solid #2E3B79;
-            border-radius: 5px;
-        }
+
+            .image-container img {
+                width: 300px;
+                height: auto;
+                border: 2px solid #2E3B79;
+                border-radius: 5px;
+            }
+
         .product-details {
             max-width: 500px;
         }
+
         .product-name {
             font-size: 24px;
-            font-weight: bold;
             margin-bottom: 10px;
         }
+
         .color-selection, .size-selection, .quantity-selection {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .color-option {
-            width: 25px; /* Reduced size */
-            height: 25px; /* Reduced size */
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             border: 2px solid black;
             cursor: pointer;
         }
+
         .color-name, .size-name {
-            font-weight: bold;
+            font-weight: normal;
         }
+
         .divider1 {
             width: 100%;
             height: 2px;
             background-color: black;
             margin: 10px auto;
         }
+
         .divider {
             width: 400px;
             height: 2px;
             background-color: black;
             margin: 10px auto;
         }
+
         .size-option {
-            width: 35px; /* Reduced size */
-            height: 35px; /* Reduced size */
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid black;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
             background-color: white;
-            font-size: 14px; /* Font size */
+            font-size: 14px;
         }
+
         .quantity-input {
-            width: 50px; /* Adjusted width */
+            width: 50px;
             text-align: center;
             border: 2px solid black;
             border-radius: 5px;
             padding: 5px;
             font-size: 14px;
         }
+
         .product-info {
             font-size: 18px;
-            font-weight: bold;
             margin-top: 20px;
         }
+
         .details-container {
             text-align: center;
             margin-top: 20px;
             padding: 20px;
         }
+
         .details-title {
             font-size: 20px;
-            font-weight: bold;
+            margin-bottom: 10px;
         }
+
         .details-box {
             width: 97%;
             height: 150px;
@@ -148,112 +159,151 @@
             background-color: white;
             font-size: 16px;
         }
+
         .additional-details {
             display: flex;
             justify-content: space-between;
             padding: 20px;
             gap: 20px;
         }
+
         .additional-details-box {
             width: 48%;
             text-align: center;
             padding: 20px;
         }
-        .additional-details-box .details-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
+
+            .additional-details-box .details-title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .additional-details-box .details-box {
+                width: 100%;
+                height: 150px;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 10px;
+                background-color: white;
+                font-size: 16px;
+            }
+        .profile-container {
+            width: 40%; /* Adjust the width to control how much space it takes */
+            max-width: 400px; /* Prevent it from growing too large */
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.7;
+            margin-left: 20px; /* Add margin to create some space between the image and the profile container */
         }
-        .additional-details-box .details-box {
-            width: 100%;
-            height: 150px;
-            border: 2px solid black;
-            border-radius: 5px;
-            padding: 10px;
-            background-color: white;
-            font-size: 16px;
-        }
+
+            .profile-container label {
+                font-size: 25px;
+            }
+
+            .profile-container input {
+                width: 40%;
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 15px;
+            }
+
+            .profile-container button {
+                margin-top: 20px;
+            }
+        
     </style>
     <script>
         function selectColor(colorName) {
             document.getElementById('selected-color').textContent = colorName;
+            let colorOptions = document.querySelectorAll('.color-option');
+            colorOptions.forEach(option => option.style.borderColor = 'black');
+            event.target.style.borderColor = 'green';
         }
+
         function selectSize(size) {
             document.getElementById('selected-size').textContent = size;
+            let sizeOptions = document.querySelectorAll('.size-option');
+            sizeOptions.forEach(option => option.style.backgroundColor = 'white');
+            event.target.style.backgroundColor = 'green';
         }
     </script>
 </head>
 <body>
-    <div class="header-container">
-        <div class="header">
-            <h2>ITEM DETAILS</h2>
-            <div class="nav-buttons">
+    <header>
+        <div class="header-container">
+            <h1>ITEM DETAILS</h1>
+            <nav>
                 <a href="HomeScreen.html"><button>Home</button></a>
                 <a href="item details.html"><button>Display</button></a>
                 <a href="Filters Page.html"><button>Filter</button></a>
                 <a href="restock.html"><button>Restock</button></a>
                 <a href="low_stock.html"><button>Low Stock</button></a>
                 <a href="profile.html"><button>Profile</button></a>
-            </div>
+            </nav>
         </div>
-    </div>
+    </header>
     <div class="content">
         <div class="image-container">
-            <img src="E:/ethemele/Clothing Inventory System/Clothing Inventory System/clothes-images/clothe1.png" alt="Product Image">
+            <img src="clothes-images/clothe1.png" alt="Product Image">
         </div>
-        <div class="product-details">
-            <div class="product-name">PRODUCT NAME</div>
-            <div class="color-selection">
-                <div class="product-info">
-                    <label for="productColor">Color:</label>
+        <div class="profile-container">
+            <div class="product-details">
+                <div class="product-name">PRODUCT NAME</div>
+                <div class="color-selection">
+                    <div class="product-info">
+                        <label for="productColor">Color:</label>
+                    </div>
+                    <div class="color-option" style="background-color: black;" onclick="selectColor('Black')"></div>
+                    <div class="color-option" style="background-color: gray;" onclick="selectColor('Gray')"></div>
+                    <div class="color-option" style="background-color: blue;" onclick="selectColor('Blue')"></div>
+                    <div class="color-option" style="background-color: white;" onclick="selectColor('White')"></div>
+                    <span id="selected-color" class="color-name">Black</span>
                 </div>
-                <div class="color-option" style="background-color: black;" onclick="selectColor('Black')"></div>
-                <div class="color-option" style="background-color: gray;" onclick="selectColor('Gray')"></div>
-                <div class="color-option" style="background-color: blue;" onclick="selectColor('Blue')"></div>
-                <div class="color-option" style="background-color: white;" onclick="selectColor('White')"></div>
-                <span id="selected-color" class="color-name">Black</span>
-            </div>
-            <div class="divider"></div>
-            <div class="size-selection">
-                <div class="product-info">
-                    <label for="productSize">Size:</label>
+                <div class="divider"></div>
+                <div class="size-selection">
+                    <div class="product-info">
+                        <label for="productSize">Size:</label>
+                    </div>
+                    <div class="size-option" onclick="selectSize('Extra Small')">XS</div>
+                    <div class="size-option" onclick="selectSize('Small')">S</div>
+                    <div class="size-option" onclick="selectSize('Medium')">M</div>
+                    <div class="size-option" onclick="selectSize('Large')">L</div>
+                    <div class="size-option" onclick="selectSize('Extra Large')">XL</div>
+                    <span id="selected-size" class="size-name">Extra Small</span>
                 </div>
-                <div class="size-option" onclick="selectSize('Extra Small')">XS</div>
-                <div class="size-option" onclick="selectSize('Small')">S</div>
-                <div class="size-option" onclick="selectSize('Medium')">M</div>
-                <div class="size-option" onclick="selectSize('Large')">L</div>
-                <div class="size-option" onclick="selectSize('Extra Large')">XL</div>
-                <span id="selected-size" class="size-name">Extra Small</span>
-            </div>
-            <div class="divider"></div>
-            <div class="quantity-selection">
-                <div class="product-info">
-                    <label for="productQuantity">Quantity:</label>
+                <div class="divider"></div>
+                <div class="quantity-selection">
+                    <div class="product-info">
+                        <label for="productQuantity">Quantity:</label>
+                    </div>
+                    <input type="number" class="quantity-input" min="1" value="1">
                 </div>
-                <input type="number" class="quantity-input" min="1" value="1">
-            </div>
-        </div>
-    </div>
-    <div class="product-info" style="margin-left: 20px; margin-right: 20px;">PRODUCT INFORMATION
-        <div class="divider1"></div>
-    </div>
-    <div class="details-container">
-        <div class="details-title">DETAILS</div>
-        <div class="details-box" style="margin-left: 20px; margin-right: 20px;"></div>
-    
-        <div class="additional-details">
-            <div class="additional-details-box">
-                <div class="details-title">Content and Care</div>
-                <div class="details-box"></div>
-            </div>
-            <div class="additional-details-box">
-                <div class="details-title">Size and Fit</div>
-                <div class="details-box"></div>
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div align="center">Clothing Store 2025</div>
-    </div>
+        <div class="product-info" style="margin-left: 20px; margin-right: 20px;">
+            PRODUCT INFORMATION
+            <hr>
+        </div>
+        <div class="details-container">
+            <div class="details-title">DETAILS</div>
+            <div class="details-box" style="margin-left: 20px; margin-right: 20px;"></div>
+
+            <div class="additional-details">
+                <div class="additional-details-box">
+                    <div class="details-title">Content and Care</div>
+                    <div class="details-box"></div>
+                </div>
+                <div class="additional-details-box">
+                    <div class="details-title">Size and Fit</div>
+                    <div class="details-box"></div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>CLOTHING STORE 2025</p>
+        </footer>
 </body>
 </html>
