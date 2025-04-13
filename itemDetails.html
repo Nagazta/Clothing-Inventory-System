@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Item Details</title>
+    <link rel="stylesheet" href="css/itemDetails.css" />
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>ITEM DETAILS</h1>
+            <nav>
+                <a href="HomeScreen.html"><button>Home</button></a>
+                <a href="Filters Page.html"><button>Filter</button></a>
+                <a href="profile.html"><button>Profile</button></a>
+                <a href="landingPage.html"><button id="logoutBtn">Logout</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="image-container">
+            <img src="" alt="Product Image" id="product-image">
+        </div>
+        <div class="profile-container">
+            <div class="product-details">
+                <div class="product-name" id="product-name">PRODUCT NAME</div>
+                
+                <!-- Color Selection -->
+                <div class="color-selection">
+                    <div class="product-info">
+                        <label for="productColor">Color:</label>
+                    </div>
+                    <div class="color-option" style="background-color: black;" onclick="selectColor('Black')"></div>
+                    <div class="color-option" style="background-color: gray;" onclick="selectColor('Gray')"></div>
+                    <div class="color-option" style="background-color: blue;" onclick="selectColor('Blue')"></div>
+                    <div class="color-option" style="background-color: white;" onclick="selectColor('White')"></div>
+                    <span id="selected-color" class="color-name">Black</span>
+                </div>
+                
+                <!-- Size Selection -->
+                <div class="size-selection">
+                    <div class="product-info">
+                        <label for="productSize">Size:</label>
+                    </div>
+                    <div class="size-option" onclick="selectSize('Extra Small')">XS</div>
+                    <div class="size-option" onclick="selectSize('Small')">S</div>
+                    <div class="size-option" onclick="selectSize('Medium')">M</div>
+                    <div class="size-option" onclick="selectSize('Large')">L</div>
+                    <div class="size-option" onclick="selectSize('Extra Large')">XL</div>
+                    <span id="selected-size" class="size-name">Extra Small</span>
+                </div>
+                
+                <!-- Quantity Selection -->
+                <div class="quantity-selection">
+                    <div class="product-info">
+                        <label for="productQuantity">Quantity:</label>
+                    </div>
+                    <input type="number" class="quantity-input" id="quantity-input" min="1" value="1">
+                    <span id="quantity-available" class="quantity-available">Quantity Available: </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-info" style="margin-left: 20px; margin-right: 20px;">
+        <hr />
+    </div>
+    <div class="details-container">
+        <div class="details-title">DETAILS</div>
+        <div class="details-box" style="margin-left: 20px; margin-right: 20px;">
+            <p id="product-details"></p>
+        </div>
+
+        <div class="additional-details">
+            <div class="additional-details-box">
+                <div class="details-title">Content and Care</div>
+                <div class="details-box" id="content-care"></div>
+            </div>
+            <div class="additional-details-box">
+                <div class="details-title">Size and Fit</div>
+                <div class="details-box" id="size-fit"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <ul class="icons">
+            <li><span class="label">Facebook</span></li>
+            <li><span class="label">Instagram</span></li>
+            <li><span class="label">Email</span></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Clothing Inventory 2025</li>
+        </ul>
+    </footer>
+
+    <script>
+        // Function to select color
+        function selectColor(color) {
+            document.getElementById('selected-color').textContent = color;
+        }
+
+        // Function to select size
+        function selectSize(size) {
+            document.getElementById('selected-size').textContent = size;
+        }
+
+        // Set the product details
+        function loadProductDetails() {
+            const product = JSON.parse(localStorage.getItem('selectedProduct'));
+
+            if (product) {
+                document.getElementById('product-name').textContent = product.name;
+                document.getElementById('product-image').src = product.imageUrl;
+                document.getElementById('quantity-available').textContent = `Quantity Available: ${product.quantity}`;
+                document.getElementById('product-details').textContent = product.details || 'No additional details available.';
+                document.getElementById('content-care').textContent = product.contentAndCare || 'No content and care instructions available.';
+                document.getElementById('size-fit').textContent = product.sizeAndFit || 'No size and fit information available.';
+            }
+        }
+
+        // Load the product details when the page is loaded
+        window.onload = loadProductDetails;
+    </script>
+</body>
+</html>

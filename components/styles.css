@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
+    flex-wrap: wrap;
     top: 0;
     z-index: 1000;
     width: 100%;
@@ -33,6 +34,8 @@
     padding: 0.5rem 0.75rem;
     border-radius: 12px;
     transition: 0.5s;
+    text-decoration:none
+
   }
   
   #nav ul li a:hover {

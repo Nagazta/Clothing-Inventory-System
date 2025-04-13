@@ -8,6 +8,7 @@
 
 
 body {
+  margin-top: 30px;
   display: block; 
   overflow-x: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,11 +18,13 @@ body {
 
   
   #banner {
+
     position: relative;
     overflow: hidden;
     color: #ffffff;
     text-align: center;
-    padding: 6rem 2rem;
+    padding: 50px;  
+    padding-top: 90px;
   }
   
   #banner::before {
