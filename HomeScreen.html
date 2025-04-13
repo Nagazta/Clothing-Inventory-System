@@ -20,46 +20,46 @@
   </header>
 
   <main class="main-wrapper">
-    <section class="welcome-section">
-      <h2>Welcome, <span id="usernameDisplay">User</span>!</h2>
-      <p>Select a function from the navigation bar above to get started.</p>
-    </section>
-
-    <section class="report-section">
-      <h3>Dashboard Overview</h3>
-      <div class="report-boxes">
-        <div class="report-box">
-          <h4>New Items</h4>
-          <p id="newItemsCount">0</p>
-        </div>
-        <div class="report-box">
-          <h4>Need of Stock</h4>
-          <p id="needStockCount">0</p>
-        </div>
-        <div class="report-box">
-          <h4>Add New Item</h4>
-          <a href="add_item.html"><button class="add-btn">Add</button></a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <section class="stock-details-section">
-    <h3>Items Needing Restock</h3>
-    <table class="stock-table">
-      <thead>
-        <tr>
-          <th>Item Name</th>
-          <th>Stock Left</th>
-          <th>Recommended Order</th>
-        </tr>
-      </thead>
-      <tbody id="stockTableBody">
-        <!-- JS will populate this -->
-      </tbody>
-    </table>
-  </section>
+    <div class="content-container">
+      <section class="welcome-section">
+        <h2>Welcome, <span id="usernameDisplay">User</span>!</h2>
+        <p>Select a function from the navigation bar above to get started.</p>
+      </section>
   
-
+      <section class="report-section">
+        <h3>Dashboard Overview</h3>
+        <div class="report-boxes">
+          <div class="report-box">
+            <h4>New Items</h4>
+            <p id="newItemsCount">0</p>
+          </div>
+          <div class="report-box">
+            <h4>Need of Stock</h4>
+            <p id="needStockCount">0</p>
+          </div>
+          <div class="report-box">
+            <h4>Add New Item</h4>
+            <a href="add_item.html"><button class="add-btn">Add</button></a>
+          </div>
+        </div>
+      </section>
+  
+      <section class="stock-details-section">
+        <h3>Items Needing Restock</h3>
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Stock Left</th>
+              <th>Recommended Order</th>
+            </tr>
+          </thead>
+          <tbody id="stockTableBody">
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
   <footer id="footer">
     <ul class="icons">
       <li><span class="label">Facebook</span></li>
