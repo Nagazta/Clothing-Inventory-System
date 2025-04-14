@@ -1,7 +1,17 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  margin-top: 30px;
+  display: block; 
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1c5253;
+  color: white;
 }
 #header {
   background: #c3eb78;
@@ -9,16 +19,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  color: #a27676;
   position: fixed;
-  width: 100%;
+  flex-wrap: wrap;
   top: 0;
   z-index: 1000;
+  width: 100%;
 }
+#header h1 {
+  margin: 0;
+}
+
 #header h1 a {
   color: #413028;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
   text-decoration: none;
 }
@@ -44,11 +57,6 @@
   color: #c3eb78;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  min-height: 100vh;
-}
 
 body::before {
   content: "";

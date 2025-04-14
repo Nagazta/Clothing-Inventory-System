@@ -30,10 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("user", JSON.stringify(user));
 
         // Update info box with new name
-        const updatedFullName = `${user.firstName} ${user.middleName} ${user.lastName}`.trim();
+        const updatedFullName = `${user.firstName} ${user.middleName} ${user.lastName} ${user.email}`.trim();
         document.getElementById("infoFullName").textContent = updatedFullName;
 
-        // Inform the user that profile was updated
         showToast("Profile updated!");
     });
 
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Logout
     document.getElementById("logoutBtn").addEventListener("click", () => {
-        localStorage.removeItem("user");
         window.location.href = "login.html";
     });
 });

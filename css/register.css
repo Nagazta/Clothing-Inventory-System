@@ -1,9 +1,18 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  margin-top: 30px;
+  display: block; 
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1c5253;
+  color: white;
+}
 #header {
   background: #c3eb78;
   padding: 1rem 2rem;
@@ -20,7 +29,7 @@
 
 #header h1 a {
   color: #413028;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
   text-decoration: none;
 }
