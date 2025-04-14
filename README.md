@@ -12,4 +12,9 @@ The Clothing Inventory System is a web-based application designed to help users 
 ## Technologies Used  
 - **Frontend**: HTML, CSS, JavaScript  
 
+## Developers
+- Lead Developer: Kyle Sepulveda
+- Front End Developer: James Allen Villamor
+                       Carlos Enicuela
+
 
