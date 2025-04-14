@@ -36,7 +36,6 @@
                     <div class="color-option" style="background-color: gray;" onclick="selectColor('Gray')"></div>
                     <div class="color-option" style="background-color: blue;" onclick="selectColor('Blue')"></div>
                     <div class="color-option" style="background-color: white;" onclick="selectColor('White')"></div>
-                    <span id="selected-color" class="color-name">Black</span>
                 </div>
                 
                 <!-- Size Selection -->
@@ -49,7 +48,6 @@
                     <div class="size-option" onclick="selectSize('Medium')">M</div>
                     <div class="size-option" onclick="selectSize('Large')">L</div>
                     <div class="size-option" onclick="selectSize('Extra Large')">XL</div>
-                    <span id="selected-size" class="size-name">Extra Small</span>
                 </div>
                 
                 <!-- Quantity Selection -->
@@ -59,6 +57,7 @@
                     </div>
                     <input type="number" class="quantity-input" id="quantity-input" min="1" value="1">
                     <span id="quantity-available" class="quantity-available">Quantity Available: </span>
+                    <button id="update-quantity-btn" onclick="updateQuantity()">Update Quantity</button>
                 </div>
             </div>
         </div>
@@ -97,32 +96,64 @@
     </footer>
 
     <script>
-        // Function to select color
-        function selectColor(color) {
-            document.getElementById('selected-color').textContent = color;
+        // Function to update quantity when the button is clicked
+        function updateQuantity() {
+            const quantity = document.getElementById('quantity-input').value;
+            const index = localStorage.getItem('selectedProductIndex');
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+    
+            if (index !== null && products.length > index) {
+                const product = products[index];
+                const newQuantity = parseInt(quantity, 10);
+    
+                // Ensure the quantity is valid
+                if (newQuantity >= 1) {
+                    product.quantity = newQuantity;
+                    localStorage.setItem('products', JSON.stringify(products));  // Save updated quantity
+                    document.getElementById('quantity-available').textContent = `Quantity Available: ${product.quantity}`;
+    
+                    // Create and display the success message
+                    const updateMessage = document.createElement('p');
+                    updateMessage.textContent = 'Product updated successfully!';
+                    updateMessage.style.color = 'green';
+                    updateMessage.style.fontWeight = 'bold';
+                    updateMessage.style.marginTop = '10px';
+    
+                    // Append the message to the product details section
+                    const productDetails = document.querySelector('.product-details');
+                    productDetails.appendChild(updateMessage);
+    
+                    // Remove the message after 3 seconds
+                    setTimeout(() => {
+                        updateMessage.remove();
+                    }, 3000);
+                }
+            }
         }
-
-        // Function to select size
-        function selectSize(size) {
-            document.getElementById('selected-size').textContent = size;
-        }
-
+    
         // Set the product details
         function loadProductDetails() {
-            const product = JSON.parse(localStorage.getItem('selectedProduct'));
-
-            if (product) {
+            const index = localStorage.getItem('selectedProductIndex'); // Get the product index from localStorage
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+    
+            if (index !== null && products.length > index) {
+                const product = products[index];
+    
                 document.getElementById('product-name').textContent = product.name;
                 document.getElementById('product-image').src = product.imageUrl;
                 document.getElementById('quantity-available').textContent = `Quantity Available: ${product.quantity}`;
                 document.getElementById('product-details').textContent = product.details || 'No additional details available.';
                 document.getElementById('content-care').textContent = product.contentAndCare || 'No content and care instructions available.';
                 document.getElementById('size-fit').textContent = product.sizeAndFit || 'No size and fit information available.';
+                document.getElementById('quantity-input').value = product.quantity; // Set the current quantity in the input field
+            } else {
+                document.getElementById('product-name').textContent = 'Product not found';
             }
         }
-
+    
         // Load the product details when the page is loaded
         window.onload = loadProductDetails;
     </script>
+    
 </body>
 </html>

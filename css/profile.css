@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #c3eb78;
+   
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    height: 180%;
+    width: 100%;
+    background: url('../assets/wallpaper/home-bg.jpeg') no-repeat center center/cover;
+    filter: blur(5px) brightness(0.4);
+    z-index: -1;
+   
+}
+
+header {
+    background-color: #c3eb78;
+    color: #1c5253;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+.header-container h1 {
+    margin: 10px 0;
+    font-size: 28px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: #1c5253;
+    color: #c3eb78;
+    border: 2px solid black;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #c3eb78;
+    color: #1c5253;
+}
+
+h2 {
+    font-size: 30px;
+}
+.profile-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 40px;
+}
+
+.left-column {
+    flex: 1;
+}
+
+.info-box {
+    flex: 0.8;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    margin-top: 40px;
+    height: 90%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    max-width: 500px;
+}
+
+.info-box h2 {
+    margin-bottom: 20px;
+    color: #c3eb78;
+}
+
+.info-box p {
+    font-size: 18px;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+
+.profile-container,
+.password-container {
+    margin: 40px 0 40px 40px;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.profile-container label,
+.password-container label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profile-container input,
+.password-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #1c5253;
+}
+
+.profile-container input:focus,
+.password-container input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #c3eb78;
+}
+
+.profile-container button,
+.password-container button {
+    margin-top: 20px;
+    width: 100%;
+}
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin: 0 auto;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    opacity: 0;
+  }
+  
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+
+#footer {
+    background: #c3eb78;
+    color: #1c5253;
+    text-align: center;
+    padding: 2rem;
+}
+
+#footer .icons {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    font-size: 0.09;
+}

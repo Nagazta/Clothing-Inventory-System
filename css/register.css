@@ -160,6 +160,20 @@ button:hover {
 .register:hover {
   color: #ffffff;
 }
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
 
 #footer {
   background: #c3eb78;

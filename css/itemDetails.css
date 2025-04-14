@@ -41,13 +41,12 @@ button:hover {
   background-color: #c3eb78;
   color: #1c5253;
 }
-/* General Body and Layout */
 body {
-  font-family: 'Roboto', sans-serif; /* More modern font */
+  font-family: 'Roboto', sans-serif; 
   color: #1c5253;
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7; /* Light background for better contrast */
+  background-color: #f7f7f7; 
 }
 
 body::before {
@@ -61,12 +60,11 @@ body::before {
   margin-left: -10px;
 }
 
-/* Content Styling */
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px; /* Space between header and content */
+  margin-top: 50px; 
   padding: 20px;
 }
 
@@ -200,30 +198,7 @@ hr {
   border-radius: 5px;
   color: #1c5253;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .profile-container {
-    margin-left: 0;
-    margin-top: 20px;
-  }
-
-  .product-details {
-    width: 100%;
-  }
-
-  .details-container, .additional-details-box {
-    width: 100%;
-  }
-}
-
-
-  
+ 
   
 #footer {
       background: #c3eb78;

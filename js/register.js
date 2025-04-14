@@ -1,37 +1,79 @@
 document.getElementById("registerForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-  
-    let username = document.getElementById("username").value.trim();
-    let fullName = document.getElementById("fullName").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("password").value.trim();
-    let cPassword = document.getElementById("confirmPassword").value.trim();
-  
-    if (!username || !fullName || !email || !password || !cPassword) {
-      alert("All fields are required!");
-      return;
-    }
-  
-    if (password.length < 6) {
-      alert("Password must be at least 6 characters long!");
-      return;
-    }
-  
-    if (password !== cPassword) {
-      alert("PASSWORDS DO NOT MATCH!");
-      return;
-    }
-  
-    let userData = {
+  event.preventDefault();
+
+  // Get field values
+  let username = document.getElementById("username").value.trim();
+  let lastName = document.getElementById("lastName").value.trim();
+  let firstName = document.getElementById("firstName").value.trim();
+  let middleName = document.getElementById("middleName").value.trim(); // optional
+  let email = document.getElementById("email").value.trim();
+  let password = document.getElementById("password").value.trim();
+  let cPassword = document.getElementById("confirmPassword").value.trim();
+
+  // Reset all errors
+  document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
+
+  let isValid = true;
+
+  if (!username) {
+      document.getElementById("usernameError").textContent = "Username is required.";
+      isValid = false;
+  }
+
+  if (!lastName) {
+      document.getElementById("lastNameError").textContent = "Last name is required.";
+      isValid = false;
+  }
+
+  if (!firstName) {
+      document.getElementById("firstNameError").textContent = "First name is required.";
+      isValid = false;
+  }
+
+  if (!email) {
+      document.getElementById("emailError").textContent = "Email is required.";
+      isValid = false;
+  } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      document.getElementById("emailError").textContent = "Invalid email format.";
+      isValid = false;
+  }
+
+  if (!password) {
+      document.getElementById("passwordError").textContent = "Password is required.";
+      isValid = false;
+  } else if (password.length < 6) {
+      document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+      isValid = false;
+  }
+
+  if (!cPassword) {
+      document.getElementById("confirmPasswordError").textContent = "Please confirm your password.";
+      isValid = false;
+  } else if (password !== cPassword) {
+      document.getElementById("confirmPasswordError").textContent = "Passwords do not match.";
+      isValid = false;
+  }
+
+  if (!isValid) return;
+
+  // Store user
+  let userData = {
       username: username,
-      fullName: fullName,
+      lastName: lastName,
+      firstName: firstName,
+      middleName: middleName,
       email: email,
       password: password
-    };
+  };
+
+  localStorage.setItem("user", JSON.stringify(userData));
+
+  const successMessage = document.getElementById("successMessage");
+  successMessage.textContent = "Registration successful! Redirecting to login page...";
   
-    localStorage.setItem("user", JSON.stringify(userData));
-  
-    alert("Registration successful! Redirecting to login page.");
+  // Optional delay before redirect
+  setTimeout(() => {
     window.location.href = "login.html";
-  });
+  }, 2000); // 2 seconds
   
+});
