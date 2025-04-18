@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/itemDetails.css">
+    <title>Item Details</title>
+    
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <h1>Clothify - Clothing Inventory System</h1>
+          <nav>
+            <a href="HomeScreen.html"><button>Home</button></a>
+            <a href="Filters Page.html"><button>Filter</button></a>
+            <a href="profile.html"><button>Profile</button></a>
+            <a href="landingPage.html"><button id="logoutBtn">Logout</button></a>
+          </nav>
+        </div>
+      </header>
+
+    <div class="back-link-container">
+        <div class="back-link" onclick="window.location.href='Filters Page.html'">Return ⟵</div>
+    </div>
+
+    <div class="product-container">
+        <div class="product-image-container">
+            <img id="productImageDisplay" class="product-image" alt="Product Image">
+        </div>
+        <div class="profile-container">
+            <div class="product-info">
+                <div class="product-name" id="productNameDisplay">No product selected</div>
+                <div class="product-category-type" id="categoryTypeDisplay"></div>
+                <div class="product-stock">
+                    <span class="stock-label">Stock Left:</span>
+                    <span id="productQuantityDisplay">0</span>
+                </div>
+                <div class="product-sizes">
+                    <span class="sizes-label">Available Sizes:</span>
+                    <div class="size-options" id="sizeOptionsDisplay"></div>
+                </div>
+                <div class="product-colors">
+                    <span class="colors-label">Available Colors:</span>
+                    <div class="color-options" id="colorOptionsDisplay"></div>
+                </div>
+            </div>
+        </div>
+        <button onclick="editProduct()" style="margin-bottom: 20px;">Edit Product</button>
+    </div>
+
+    <div class="product-details-section">
+    <div class="product-info1">
+        PRODUCT DESCRIPTION
+        <div class="divider1"></div>
+    </div>
+
+    <div class="details-container">
+        <div class="details-title">DETAILS</div>
+        <div class="details-box" id="productDetailsDisplay"></div>
+
+        <div class="additional-details">
+            <div class="additional-details-box">
+                <div class="details-title">Content and Care</div>
+                <div class="details-box" id="contentCareDisplay"></div>
+            </div>
+            <div class="additional-details-box">
+                <div class="details-title">Size and Fit</div>
+                <div class="details-box" id="sizeFitDisplay"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <ul class="icons">
+      <li><span class="label">Facebook</span></li>
+      <li><span class="label">Instagram</span></li>
+      <li><span class="label">Email</span></li>
+    </ul>
+    <ul class="copyright">
+      <li>&copy; Clothing Inventory 2025</li>
+    </ul>
+</footer>
+
+    <script>
+    // When the page loads, display the current product
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the complete product object from localStorage
+        let productData = {};
+        try {
+            const storedProduct = localStorage.getItem('currentProduct');
+            if (storedProduct) {
+                productData = JSON.parse(storedProduct);
+            }
+        } catch (e) {
+            console.error('Error parsing product data:', e);
+        }
+        
+        // Display product name
+        document.getElementById('productNameDisplay').textContent = 
+            productData.name || 'No product selected';
+
+        // Display category/type
+        if (productData.category || productData.type) {
+            document.getElementById('categoryTypeDisplay').innerHTML = `
+                <span class="category">${productData.category || 'No category'}</span>
+                <span class="separator">/</span>
+                <span class="type">${productData.type || 'No type'}</span>
+            `;
+        }
+
+        // Display quantity
+        document.getElementById('productQuantityDisplay').textContent = 
+            productData.quantity || '0';
+
+        // Display sizes
+        const sizeOptionsElement = document.getElementById('sizeOptionsDisplay');
+        if (productData.sizes && Array.isArray(productData.sizes)) {
+            sizeOptionsElement.innerHTML = productData.sizes.map(size => 
+                `<div class="size-box selected">${size}</div>`
+            ).join('');
+        } else {
+            sizeOptionsElement.innerHTML = '<div class="no-sizes">No sizes selected</div>';
+        }
+
+        // Display colors
+        const colorOptionsElement = document.getElementById('colorOptionsDisplay');
+        if (productData.colors && Array.isArray(productData.colors)) {
+            colorOptionsElement.innerHTML = productData.colors.map(color => 
+                `<div class="color-box" data-color="${color}">${color}</div>`
+            ).join('');
+        } else {
+            colorOptionsElement.innerHTML = '<div class="no-colors">No colors selected</div>';
+        }
+
+        // Display image
+        const imgElement = document.getElementById('productImageDisplay');
+        if (productData.image && typeof productData.image === 'string' && productData.image.trim() !== '') {
+            imgElement.src = productData.image;
+            imgElement.style.display = 'block';
+        } else {
+            const container = document.querySelector('.product-image-container');
+            container.textContent = 'No image available';
+            container.style.display = 'flex';
+            container.style.alignItems = 'center';
+            container.style.justifyContent = 'center';
+            container.style.color = '#777';
+            container.style.fontStyle = 'italic';
+        }
+
+        // Improved placeholder detection
+        const isPlaceholder = (text, phrases) => {
+            if (!text || typeof text !== 'string') return true;
+            return phrases.some(phrase => text.includes(phrase));
+        };
+        
+        // Product details
+        const productDetails = document.getElementById('productDetailsDisplay');
+        if (isPlaceholder(productData.details, ['Enter product details here', 'No details provided'])) {
+            productDetails.textContent = 'No details provided';
+            productDetails.style.fontStyle = 'italic';
+            productDetails.style.color = '#777';
+        } else {
+            productDetails.textContent = productData.details;
+        }
+
+        // Content and care
+        const contentCare = document.getElementById('contentCareDisplay');
+        if (isPlaceholder(productData.contentCare, ['Enter content and care', 'No content and care instructions provided'])) {
+            contentCare.textContent = 'No content and care instructions provided';
+            contentCare.style.fontStyle = 'italic';
+            contentCare.style.color = '#777';
+        } else {
+            contentCare.textContent = productData.contentCare;
+        }
+
+        // Size and fit
+        const sizeFit = document.getElementById('sizeFitDisplay');
+        if (isPlaceholder(productData.sizeFit, ['Enter size and fit', 'No size and fit information provided'])) {
+            sizeFit.textContent = 'No size and fit information provided';
+            sizeFit.style.fontStyle = 'italic';
+            sizeFit.style.color = '#777';
+        } else {
+            sizeFit.textContent = productData.sizeFit;
+        }
+
+        if (!productData || Object.keys(productData).length === 0) {
+            alert('No product data found. Please select a product first.');
+            // Optionally redirect to products page
+            // window.location.href = 'Filters Page.html';
+        }
+    });
+
+    function editProduct() {
+        // The currentProduct is already stored in localStorage from the view page
+        window.location.href = 'edit item page.html'; // Redirect to Edit Page
+    }
+</script>
+</body>
+</html>

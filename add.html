@@ -1,0 +1,622 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/add.css">
+    <title>Add Page</title>
+    
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <h1>Clothify - Clothing Inventory System</h1>
+          <nav>
+            <a href="HomeScreen.html"><button>Home</button></a>
+            <a href="Filters Page.html"><button>Filter</button></a>
+            <a href="profile.html"><button>Profile</button></a>
+            <a href="landingPage.html"><button id="logoutBtn">Logout</button></a>
+          </nav>
+        </div>
+      </header>
+
+    <div class="container">
+        <div class="upload-container" id="uploadContainer" onclick="document.getElementById('fileInput').click();">
+            <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)" required>
+            <span id="uploadText">UPLOAD IMAGE</span>
+            <img id="preview" alt="Uploaded Image">
+        </div>
+        <span class="error-message" id="fileInputError">Please upload an image</span>
+
+        <div class="profile-container">
+            <h2>Add Product</h2>
+            <div class="form-row">
+                <!-- Left Column -->
+                <div class="form-column">
+                    <div class="form-section">
+                        <label for="productName">Product Name:</label>
+                        <input type="text" id="productName" placeholder="Enter product name" class="required-field" required>
+                        <span class="error-message" id="productNameError">Please enter a product name</span>
+                    </div>
+
+                    <div class="form-section">
+                        <label for="productQuantity">Stock Quantity:</label>
+                        <input type="number" id="productQuantity" class="quantity-input" placeholder="Qty" class="required-field" required>
+                        <span class="error-message" id="productQuantityError">Please enter a valid quantity</span>
+                    </div>
+
+                    <div class="form-section size-selection">
+                        <label>Sizes:<span class="required-indicator"></span></label>
+                        <div class="size-options select-box">
+                            <div class="size-option" onclick="toggleSize(this)">XS</div>
+                            <div class="size-option" onclick="toggleSize(this)">S</div>
+                            <div class="size-option" onclick="toggleSize(this)">M</div>
+                            <div class="size-option" onclick="toggleSize(this)">L</div>
+                            <div class="size-option" onclick="toggleSize(this)">XL</div>
+                        </div>
+                        <span class="error-message" id="sizeError">Please select at least one size</span>
+                    </div>
+
+                    <div class="form-section color-selection">
+                        <label>Colors:<span class="required-indicator"></span></label>
+                        <div class="color-options select-box">
+                            <div class="color-option" style="background-color: red;" onclick="toggleColor(this)">Red</div>
+                            <div class="color-option" style="background-color: blue;" onclick="toggleColor(this)">Blue</div>
+                            <div class="color-option" style="background-color: yellow; color: black;" onclick="toggleColor(this)">Yellow</div>
+                            <div class="color-option" style="background-color: green;" onclick="toggleColor(this)">Green</div>
+                            <div class="color-option" style="background-color: grey;" onclick="toggleColor(this)">Grey</div>
+                            <div class="color-option" style="background-color: brown;" onclick="toggleColor(this)">Brown</div>
+                            <div class="color-option" style="background-color: black;" onclick="toggleColor(this)">Black</div>
+                            <div class="color-option" style="background-color: white; color: black; border: 1px solid black;" onclick="toggleColor(this)">White</div>
+                        </div>
+                        <span class="error-message" id="colorError">Please select at least one color</span>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="form-column">
+                    <div class="form-section category-selection">
+                        <label>Category:<span class="required-indicator"></span></label>
+                        <div class="category-options select-box">
+                            <div class="category-option" onclick="selectCategory(this)">MEN</div>
+                            <div class="category-option" onclick="selectCategory(this)">WOMEN</div>
+                            <div class="category-option" onclick="selectCategory(this)">GIRLS</div>
+                            <div class="category-option" onclick="selectCategory(this)">BOYS</div>
+                            <div class="category-option" onclick="selectCategory(this)">BABIES</div>
+                        </div>
+                        <span class="error-message" id="categoryError">Please select a category</span>
+                    </div>
+
+                    <div class="form-section type-selection">
+                        <label>Type:<span class="required-indicator"></span></label>
+                        <div class="type-options select-box">
+                            <div class="type-option" onclick="selectType(this)">TOPWEAR</div>
+                            <div class="type-option" onclick="selectType(this)">BOTTOMWEAR</div>
+                            <div class="type-option" onclick="selectType(this)">DRESSES</div>
+                            <div class="type-option" onclick="selectType(this)">OUTERWEAR</div>
+                        </div>
+                        <span class="error-message" id="typeError">Please select a type</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <div class="product-info1" style="margin-left: 20px; margin-right: 20px;">
+        PRODUCT DESCRIPTION
+        <div class="divider1"></div>
+    </div>
+
+    <div class="details-container">
+        <div class="details-title">DETAILS</div>
+        <div class="details-box placeholder" id="productDetailsBox" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter product details here...')">Enter product details here...</div>
+        <span class="error-message" id="detailsError">Please enter product details</span>
+
+        <div class="additional-details">
+            <div class="additional-details-box">
+                <div class="details-title">Content and Care</div>
+                <div class="details-box placeholder" id="contentCareBox" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter content and care instructions here...')">Enter content and care instructions here...</div>
+                <span class="error-message" id="contentCareError">Please enter content and care instructions</span>
+            </div>
+            <div class="additional-details-box">
+                <div class="details-title">Size and Fit</div>
+                <div class="details-box placeholder" id="sizeFitBox" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter size and fit information here...')">Enter size and fit information here...</div>
+                <span class="error-message" id="sizeFitError">Please enter size and fit information</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmationPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h3>Confirm Add New Product?</h3>
+            <div class="popup-buttons">
+                <button onclick="cancelSubmission()" class="cancel-btn">Go Back</button>
+                <button onclick="confirmSubmission()" class="confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <ul class="icons">
+          <li><span class="label">Facebook</span></li>
+          <li><span class="label">Instagram</span></li>
+          <li><span class="label">Email</span></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; Clothing Inventory 2025</li>
+        </ul>
+    </footer>
+    <script>
+        // DOM Elements
+        const productDetailsBox = document.getElementById('productDetailsBox');
+        const contentCareBox = document.getElementById('contentCareBox');
+        const sizeFitBox = document.getElementById('sizeFitBox');
+
+        // Store form data temporarily
+        let formData = {};
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('preview');
+            const uploadText = document.getElementById('uploadText');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    uploadText.style.display = 'none';
+                    document.getElementById('uploadContainer').classList.remove('upload-required');
+                    hideError('fileInput');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function toggleSize(element) {
+            element.classList.toggle('selected');
+            const hasSelection = document.querySelectorAll('.size-option.selected').length > 0;
+    
+            if (hasSelection) {
+                hideError('size');
+            }
+        }
+
+        function clearPlaceholder(element) {
+            if (element.innerText.trim() === 'Enter product details here...' ||
+                element.innerText.trim() === 'Enter content and care instructions here...' ||
+                element.innerText.trim() === 'Enter size and fit information here...') {
+                element.innerText = '';
+                element.classList.remove('placeholder');
+            }
+        }
+
+        function restorePlaceholder(element, text) {
+            if (element.innerText.trim() === '') {
+                element.innerText = text;
+                element.classList.add('placeholder');
+            }
+        }
+
+        function toggleColor(element) {
+            element.classList.toggle('selected');
+            const hasSelection = document.querySelectorAll('.color-option.selected').length > 0;
+    
+            if (hasSelection) {
+                hideError('color');
+            }
+        }
+
+        function selectCategory(element) {
+            const categoryOptions = element.parentElement.querySelectorAll('.category-option');
+            categoryOptions.forEach(option => {
+                option.classList.remove('selected');
+            });
+    
+            element.classList.add('selected');
+            hideError('category');
+        }
+
+        function selectType(element) {
+            const typeOptions = element.parentElement.querySelectorAll('.type-option');
+            typeOptions.forEach(option => {
+                option.classList.remove('selected');
+            });
+    
+            element.classList.add('selected');
+            hideError('type');
+        }
+
+        function submitForm() {
+            // First validate all required fields
+            if (!validateForm()) {
+                return false; // Stop if validation fails
+            }
+
+            // Gather all form data
+            const rawProductName = document.getElementById('productName').value;
+            formData.productName = capitalizeWords(rawProductName);
+            formData.productQuantity = document.getElementById('productQuantity').value;
+            formData.imageInput = document.getElementById('fileInput');
+            formData.selectedCategory = document.querySelector('.category-option.selected')?.innerText || '';
+            formData.selectedType = document.querySelector('.type-option.selected')?.innerText || '';
+
+            // Get selected sizes
+            formData.selectedSizes = [];
+            document.querySelectorAll('.size-option.selected').forEach(size => {
+                formData.selectedSizes.push(size.innerText);
+            });
+
+            // Get selected colors
+            formData.selectedColors = [];
+            document.querySelectorAll('.color-option.selected').forEach(color => {
+                formData.selectedColors.push(color.innerText);
+            });
+
+            // Get details content
+            formData.productDetails = getCleanContent(productDetailsBox);
+            formData.contentCare = getCleanContent(contentCareBox);
+            formData.sizeFit = getCleanContent(sizeFitBox);
+
+            // Show confirmation popup only if validation passed
+            document.getElementById('confirmationPopup').style.display = 'flex';
+            return false;
+        }
+
+        function getCleanContent(element) {
+            const text = element.innerText.trim();
+            return text.startsWith('Enter ') ? '' : text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+        }
+
+        console.log("Form data before submission:", formData);
+
+        async function confirmSubmission() {
+            try {
+                // Create product data object
+                const productData = {
+                    id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5), // Unique ID
+                    name: formData.productName,
+                    category: formData.selectedCategory,
+                    type: formData.selectedType,
+                    sizes: formData.selectedSizes,
+                    colors: formData.selectedColors,
+                    image: await getImageData(formData.imageInput.files[0]),
+                    quantity: parseInt(formData.productQuantity),
+                    details: formData.productDetails,
+                    contentCare: formData.contentCare,
+                    sizeFit: formData.sizeFit,
+                    dateAdded: new Date().toISOString()
+                };
+
+                // Save product to localStorage
+                const success = await saveProduct(productData);
+
+                // Handle image upload
+                if (formData.imageInput.files && formData.imageInput.files[0]) {
+                    productData.image = await getImageData(formData.imageInput.files[0]);
+            
+                    // Compress image if too large
+                    if (productData.image.length > 1000000) { // 1MB
+                        productData.image = await compressImage(productData.image);
+                    }
+                }
+        
+                if (success) {
+                    // Store the complete product object to display in item details
+                    localStorage.setItem('currentProduct', JSON.stringify(productData));
+                    window.location.href = 'item details.html';
+                } else {
+                    alert('Failed to save product. Please try again.');
+                    document.getElementById('confirmationPopup').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Detailed error:', error);
+                alert(`Error: ${error.message}`);
+                document.getElementById('confirmationPopup').style.display = 'none';
+            }
+        }
+
+        function validateProductData(product) {
+            const requiredFields = ['id', 'name', 'category', 'type', 'sizes', 'colors'];
+            const missingFields = requiredFields.filter(field => !product[field]);
+    
+            if (missingFields.length > 0) {
+                console.error('Missing required fields:', missingFields);
+                return false;
+            }
+    
+            if (!Array.isArray(product.sizes) || product.sizes.length === 0) {
+                console.error('Invalid sizes array');
+                return false;
+            }
+    
+            if (!Array.isArray(product.colors) || product.colors.length === 0) {
+                console.error('Invalid colors array');
+                return false;
+            }
+    
+            return true;
+        }
+
+        // Usage in saveProduct():
+        if (!validateProductData(productData)) {
+            throw new Error('Invalid product data');
+        }
+
+        function migrateOldProducts() {
+            const oldProducts = JSON.parse(localStorage.getItem('old_products')) || [];
+            const newProducts = oldProducts.map(product => ({
+                id: product.id || Date.now().toString(36),
+                name: product.name || 'Unnamed Product',
+                category: product.category || 'UNCATEGORIZED',
+                type: product.type || 'UNSPECIFIED',
+                sizes: product.sizes || [],
+                colors: product.colors || [],
+                image: product.image || null,
+                // Preserve other existing data
+                ...product
+            }));
+    
+            localStorage.setItem('products', JSON.stringify(newProducts));
+            localStorage.removeItem('old_products');
+        }
+
+        function cancelSubmission() {
+            document.getElementById('confirmationPopup').style.display = 'none';
+        }
+
+        function capitalizeWords(str) {
+            return str.split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
+        }
+
+        function validateForm() {
+            let isValid = true;
+
+            // Validate image upload
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput.files || fileInput.files.length === 0) {
+                document.getElementById('uploadContainer').classList.add('upload-required');
+                showError('fileInput');
+                isValid = false;
+            } else {
+                document.getElementById('uploadContainer').classList.remove('upload-required');
+                hideError('fileInput');
+            }
+
+            // Validate product name
+            const productName = document.getElementById('productName').value.trim();
+            if (!productName) {
+                document.getElementById('productName').classList.add('input-error');
+                showError('productName');
+                isValid = false;
+            } else {
+                document.getElementById('productName').classList.remove('input-error');
+                hideError('productName');
+            }
+
+            // Validate quantity
+            const quantity = document.getElementById('productQuantity').value.trim();
+            if (!quantity || isNaN(quantity) || parseInt(quantity) <= 0) {
+                document.getElementById('productQuantity').classList.add('input-error');
+                showError('productQuantity');
+                isValid = false;
+            } else {
+                document.getElementById('productQuantity').classList.remove('input-error');
+                hideError('productQuantity');
+            }
+
+            // Validate sizes
+            const sizesSelected = document.querySelectorAll('.size-option.selected').length > 0;
+            if (!sizesSelected) {
+                document.querySelector('.size-selection').classList.add('selection-required');
+                showError('size');
+                isValid = false;
+            } else {
+                document.querySelector('.size-selection').classList.remove('selection-required');
+                hideError('size');
+            }
+
+            // Validate colors
+            const colorsSelected = document.querySelectorAll('.color-option.selected').length > 0;
+            if (!colorsSelected) {
+                document.querySelector('.color-selection').classList.add('selection-required');
+                showError('color');
+                isValid = false;
+            } else {
+                document.querySelector('.color-selection').classList.remove('selection-required');
+                hideError('color');
+            }
+
+            // Validate category
+            const categorySelected = document.querySelector('.category-option.selected') !== null;
+            if (!categorySelected) {
+                document.querySelector('.category-selection').classList.add('selection-required');
+                showError('category');
+                isValid = false;
+            } else {
+                document.querySelector('.category-selection').classList.remove('selection-required');
+                hideError('category');
+            }
+
+            // Validate type
+            const typeSelected = document.querySelector('.type-option.selected') !== null;
+            if (!typeSelected) {
+                document.querySelector('.type-selection').classList.add('selection-required');
+                showError('type');
+                isValid = false;
+            } else {
+                document.querySelector('.type-selection').classList.remove('selection-required');
+                hideError('type');
+            }
+
+            // Validate product details box
+            if (productDetailsBox.innerText.trim() === '' || 
+                productDetailsBox.innerText.trim() === 'Enter product details here...') {
+                productDetailsBox.classList.add('details-required');
+                showError('details');
+                isValid = false;
+            } else {
+                productDetailsBox.classList.remove('details-required');
+                hideError('details');
+            }
+
+            // Validate content and care box
+            if (contentCareBox.innerText.trim() === '' || 
+                contentCareBox.innerText.trim() === 'Enter content and care instructions here...') {
+                contentCareBox.classList.add('details-required');
+                showError('contentCare');
+                isValid = false;
+            } else {
+                contentCareBox.classList.remove('details-required');
+                hideError('contentCare');
+            }
+
+            // Validate size and fit box
+            if (sizeFitBox.innerText.trim() === '' || 
+                sizeFitBox.innerText.trim() === 'Enter size and fit information here...') {
+                sizeFitBox.classList.add('details-required');
+                showError('sizeFit');
+                isValid = false;
+            } else {
+                sizeFitBox.classList.remove('details-required');
+                hideError('sizeFit');
+            }
+
+            if (!isValid) {
+                scrollToFirstError();
+            }
+
+            return isValid;
+        }
+
+        function showError(fieldId) {
+            const errorElement = document.getElementById(fieldId + 'Error');
+            if (errorElement) {
+                errorElement.style.display = 'block';
+            }
+        }
+
+        function hideError(fieldId) {
+            const errorElement = document.getElementById(fieldId + 'Error');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+        }
+
+        function scrollToFirstError() {
+            const firstError = document.querySelector('.input-error, .upload-required, .selection-required, .details-required');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Improved product storage
+        async function saveProduct(productData) {
+            try {
+                let products = JSON.parse(localStorage.getItem('products')) || [];
+        
+                // Ensure product has required filter fields
+                productData = {
+                    ...productData,
+                    sizes: productData.sizes || [],
+                    colors: productData.colors || [],
+                    category: productData.category || 'UNCATEGORIZED',
+                    type: productData.type || 'UNSPECIFIED'
+                };
+        
+                products.push(productData);
+                localStorage.setItem('products', JSON.stringify(products));
+        
+                console.log('Successfully saved:', productData); // Debug
+                return true;
+            } catch (error) {
+                console.error('Save error:', error);
+                return false;
+            }
+        }
+
+        // Basic image compression
+        async function compressImage(dataUrl) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+        
+                    // Calculate new dimensions (reduce by 50%)
+                    const width = img.width * 0.5;
+                    const height = img.height * 0.5;
+        
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+        
+                    // Convert to JPEG with 70% quality
+                    resolve(canvas.toDataURL('image/jpeg', 0.7));
+                };
+                img.src = dataUrl;
+            });
+        }
+
+        // Helper function to get image data
+        function getImageData(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Event listeners for real-time validation
+        document.getElementById('fileInput').addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                document.getElementById('uploadContainer').classList.remove('upload-required');
+                hideError('fileInput');
+            }
+        });
+
+        document.getElementById('productName').addEventListener('input', function() {
+            if (this.value.trim()) {
+                this.classList.remove('input-error');
+                hideError('productName');
+            }
+        });
+
+        document.getElementById('productQuantity').addEventListener('input', function() {
+            if (this.value.trim() && !isNaN(this.value)) {
+                this.classList.remove('input-error');
+                hideError('productQuantity');
+            }
+        });
+
+        // For content-editable boxes
+        [productDetailsBox, contentCareBox, sizeFitBox].forEach(box => {
+            box.addEventListener('input', function() {
+                if (this.innerText.trim() && !this.innerText.trim().startsWith('Enter ')) {
+                    this.classList.remove('details-required');
+                    const boxId = this.id.replace('Box', '');
+                    hideError(boxId);
+                }
+            });
+        });
+
+        // Prevent form submission on Enter key in inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitForm();
+                }
+            });
+        });
+
+        console.log('Saved products:', JSON.parse(localStorage.getItem('products')));
+    </script>
+</body>
+</html>

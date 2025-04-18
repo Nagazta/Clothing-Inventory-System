@@ -59,6 +59,16 @@ const products = [
         sizeAndFit: 'High-waisted. Model is 5\'7" wearing size XL.',
         imageUrl: 'assets/clothes-images/Luminoire1.jpg'
     },
+    {
+        name: 'Elegant Black Skirt',
+        categories: ['WOMEN', 'BOTTOMWEAR'],
+        size: 'XL',
+        color: 'White',
+        quantity: 11,
+        contentAndCare: '90% Polyester, 10% Spandex. Machine wash cold.',
+        sizeAndFit: 'High-waisted. Model is 5\'7" wearing size XL.',
+        imageUrl: 'assets/clothes-images/Luminoire1.jpg'
+    }
    
 ];
 

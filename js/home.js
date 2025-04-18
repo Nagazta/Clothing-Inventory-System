@@ -1,13 +1,21 @@
+// Runs when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {
+  updateHomepage(); // Update the homepage on page load
+});
+
+// Function to update the homepage with current product data
+function updateHomepage() {
   const products = JSON.parse(localStorage.getItem('products')) || [];
 
-  const lowStockItems = products.filter(product => product.quantity < 10 && !product.isNew);
+  const lowStockItems = products.filter(product => product.quantity < 10);
 
+  // Update counts
   document.getElementById('newItemsCount').textContent = lowStockItems.length;
   document.getElementById('needStockCount').textContent = lowStockItems.length;
 
+  // Update the stock table dynamically
   const stockTableBody = document.getElementById('stockTableBody');
-  stockTableBody.innerHTML = ''; 
+  stockTableBody.innerHTML = ''; // Clear the current table
 
   lowStockItems.forEach(item => {
     const row = document.createElement('tr');
@@ -27,26 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stockTableBody.appendChild(row);
   });
-
+  
+  // Display username
   const username = localStorage.getItem('username') || 'User';
   document.getElementById('usernameDisplay').textContent = username;
-});
+}
 
+// Function to add new item and update the homepage without reloading the page
 function addNewItem(name, quantity) {
   const products = JSON.parse(localStorage.getItem('products')) || [];
 
   const newItem = {
     name: name,
     quantity: quantity,
-    isNew: true, 
+    isNew: true,  // Flag the item as new
   };
 
+  // Add the new item to the products array
   products.push(newItem);
   localStorage.setItem('products', JSON.stringify(products));
 
-  if (newItem.quantity < 10) {
-    const lowStockItems = products.filter(product => product.quantity < 10);
-    document.getElementById('newItemsCount').textContent = lowStockItems.length;
-    document.getElementById('needStockCount').textContent = lowStockItems.length;
-  }
+  // Call updateHomepage to refresh the stock table and counts
+  updateHomepage();
 }

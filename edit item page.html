@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/edit.css">
+    <title>Edit Product</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Clothify - Clothing Inventory System</h1>
+      <nav>
+        <a href="HomeScreen.html"><button>Home</button></a>
+        <a href="Filters Page.html"><button>Filter</button></a>
+        <a href="profile.html"><button>Profile</button></a>
+        <a href="landingPage.html"><button id="logoutBtn">Logout</button></a>
+      </nav>
+    </div>
+  </header>
+
+    <!-- Back button -->
+    <div class="back-link-container">
+        <div class="back-link" onclick="checkForChanges()">Return ⟵</div>
+    </div>
+
+    <div class="container">
+        <div class="upload-container" id="uploadContainer" onclick="document.getElementById('fileInput').click();">
+            <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)" required>
+            <span id="uploadText">UPLOAD IMAGE</span>
+            <img id="preview" alt="Product Image">
+        </div>
+        <span class="error-message" id="fileInputError">Please upload an image</span>
+
+        <div class="profile-container">
+            <h2>Edit Product</h2>
+            <div class="form-row">
+                <!-- Left Column -->
+                <div class="form-column">
+                    <div class="form-section">
+                        <label for="productName">Product Name:</label>
+                        <input type="text" id="productName" placeholder="Enter product name" class="required-field" required>
+                        <span class="error-message" id="productNameError">Please enter a product name</span>
+                    </div>
+
+                    <div class="form-section">
+                        <label for="productQuantity">Stock Quantity:</label>
+                        <input type="number" id="productQuantity" class="quantity-input" placeholder="Qty" required>
+                        <span class="error-message" id="productQuantityError">Please enter a valid quantity</span>
+                    </div>
+
+                    <div class="form-section size-selection">
+                        <label>Sizes:<span class="required-indicator"></span></label>
+                        <div class="size-options select-box">
+                            <div class="size-option" onclick="toggleSize(this)">XS</div>
+                            <div class="size-option" onclick="toggleSize(this)">S</div>
+                            <div class="size-option" onclick="toggleSize(this)">M</div>
+                            <div class="size-option" onclick="toggleSize(this)">L</div>
+                            <div class="size-option" onclick="toggleSize(this)">XL</div>
+                        </div>
+                        <span class="error-message" id="sizeError">Please select at least one size</span>
+                    </div>
+
+                    <div class="form-section color-selection">
+                        <label>Colors:<span class="required-indicator"></span></label>
+                        <div class="color-options select-box">
+                            <div class="color-option" style="background-color: red;" onclick="toggleColor(this)">Red</div>
+                            <div class="color-option" style="background-color: blue;" onclick="toggleColor(this)">Blue</div>
+                            <div class="color-option" style="background-color: yellow; color: black;" onclick="toggleColor(this)">Yellow</div>
+                            <div class="color-option" style="background-color: green;" onclick="toggleColor(this)">Green</div>
+                            <div class="color-option" style="background-color: grey;" onclick="toggleColor(this)">Grey</div>
+                            <div class="color-option" style="background-color: brown;" onclick="toggleColor(this)">Brown</div>
+                            <div class="color-option" style="background-color: black;" onclick="toggleColor(this)">Black</div>
+                            <div class="color-option" style="background-color: white; color: black; border: 1px solid black;" onclick="toggleColor(this)">White</div>
+                        </div>
+                        <span class="error-message" id="colorError">Please select at least one color</span>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="form-column">
+                    <div class="form-section category-selection">
+                        <label>Category:<span class="required-indicator"></span></label>
+                        <div class="category-options select-box">
+                            <div class="category-option" onclick="selectCategory(this)">MEN</div>
+                            <div class="category-option" onclick="selectCategory(this)">WOMEN</div>
+                            <div class="category-option" onclick="selectCategory(this)">GIRLS</div>
+                            <div class="category-option" onclick="selectCategory(this)">BOYS</div>
+                            <div class="category-option" onclick="selectCategory(this)">BABIES</div>
+                        </div>
+                        <span class="error-message" id="categoryError">Please select a category</span>
+                    </div>
+
+                    <div class="form-section type-selection">
+                        <label>Type:<span class="required-indicator"></span></label>
+                        <div class="type-options select-box">
+                            <div class="type-option" onclick="selectType(this)">TOPWEAR</div>
+                            <div class="type-option" onclick="selectType(this)">BOTTOMWEAR</div>
+                            <div class="type-option" onclick="selectType(this)">DRESSES</div>
+                            <div class="type-option" onclick="selectType(this)">OUTERWEAR</div>
+                        </div>
+                        <span class="error-message" id="typeError">Please select a type</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button class="update-btn" onclick="submitForm()">Update</button>
+                <button class="delete-btn" onclick="showDeleteConfirmation()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-info1" style="margin-left: 20px; margin-right: 20px;">
+        PRODUCT DESCRIPTION
+        <div class="divider1"></div>
+    </div>
+
+    <div class="details-container">
+        <div class="details-title">DETAILS</div>
+        <div class="details-box placeholder" id="productDetailsBox" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter product details here...')">Enter product details here...</div>
+        <span class="error-message" id="detailsError">Please enter product details</span>
+
+        <div class="additional-details">
+            <div class="additional-details-box">
+                <div class="details-title">Content and Care</div>
+                <div class="details-box placeholder" id="contentCareBox" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter content and care instructions here...')">Enter content and care instructions here...</div>
+                <span class="error-message" id="contentCareError">Please enter content and care instructions</span>
+            </div>
+            <div class="additional-details-box">
+                <div class="details-title">Size and Fit</div>
+                <div class="details-box placeholder" id="sizeFitBox" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Enter size and fit information here...')">Enter size and fit information here...</div>
+                <span class="error-message" id="sizeFitError">Please enter size and fit information</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Confirmation Popup -->
+    <div id="confirmationPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h3>Confirm Update?</h3>
+            <div class="popup-buttons">
+                <button onclick="cancelSubmission()" class="cancel-btn">Go Back</button>
+                <button onclick="confirmSubmission()" class="confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Popup -->
+    <div id="deleteConfirmationPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h3>Delete Product?</h3>
+            <p>This action cannot be undone.</p>
+            <div class="popup-buttons">
+                <button onclick="cancelDelete()" class="cancel-btn">Go Back</button>
+                <button onclick="confirmDelete()" class="confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Confirmation Popup -->
+    <div id="backConfirmationPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h3>Do you wish to go back without saving?</h3>
+            <div class="popup-buttons">
+                <button onclick="discardChanges()" class="cancel-btn">Discard</button>
+                <button onclick="saveAndGoBack()" class="confirm-btn">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/edit.js"></script>
+
+    <footer id="footer">
+        <ul class="icons">
+          <li><span class="label">Facebook</span></li>
+          <li><span class="label">Instagram</span></li>
+          <li><span class="label">Email</span></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; Clothing Inventory 2025</li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -7,8 +7,8 @@ body {
 body::before {
   content: "";
   position: absolute;
-  height: 150%;
-  width: 120%;
+  height: 145%;
+  width: 1435px;
   background: url('../assets/wallpaper/home-bg.jpeg') no-repeat center center/cover;
   filter: blur(5px) brightness(0.4);
   z-index: -1;
@@ -178,9 +178,9 @@ a{
   color: #1c5253;
   text-align: center;
   padding: 2rem;
-  width: 100%;
   bottom: 0;
-  margin-top: 30px;
+  margin-top: 120px;
+
 }
 
 #footer .icons {
