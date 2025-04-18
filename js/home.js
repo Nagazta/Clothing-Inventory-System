@@ -8,9 +8,10 @@ function updateHomepage() {
   const products = JSON.parse(localStorage.getItem('products')) || [];
 
   const lowStockItems = products.filter(product => product.quantity < 10);
+  const newItems = products.filter(product => product.isNew === true);
 
   // Update counts
-  document.getElementById('newItemsCount').textContent = lowStockItems.length;
+  document.getElementById('newItemsCount').textContent = newItems.length;
   document.getElementById('needStockCount').textContent = lowStockItems.length;
 
   // Update the stock table dynamically
@@ -35,26 +36,22 @@ function updateHomepage() {
 
     stockTableBody.appendChild(row);
   });
-  
+
   // Display username
-  const username = localStorage.getItem('username') || 'User';
-  document.getElementById('usernameDisplay').textContent = username;
+ 
 }
 
-// Function to add new item and update the homepage without reloading the page
+// Function to add a new item (optional use elsewhere)
 function addNewItem(name, quantity) {
   const products = JSON.parse(localStorage.getItem('products')) || [];
 
   const newItem = {
     name: name,
     quantity: quantity,
-    isNew: true,  // Flag the item as new
+    isNew: true, // Important for New Items count
   };
 
-  // Add the new item to the products array
   products.push(newItem);
   localStorage.setItem('products', JSON.stringify(products));
-
-  // Call updateHomepage to refresh the stock table and counts
   updateHomepage();
 }
