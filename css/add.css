@@ -7,12 +7,11 @@ body {
 body::before {
   content: "";
   position: absolute;
-  height: 150%;
-  width: 120%;
+  height: 200%;
+  width: 100%;
   background: url('../assets/wallpaper/home-bg.jpeg') no-repeat center center/cover;
   filter: blur(5px) brightness(0.4);
   z-index: -1;
-  margin-left: -10px;
 }
 
 header {
@@ -64,9 +63,9 @@ button:hover {
   color: #1c5253;
   text-align: center;
   padding: 2rem;
-  width: 100%;
+  width: 95.4%;
   bottom: 0;
-  margin-top: 30px;
+  margin-top: 85px;
 }
 
 #footer .icons {
@@ -96,6 +95,8 @@ h2 {
 }
 
 .upload-container {
+  color: #1c5253;
+  font-weight: bold;
   background-color: white;
   width: 250px;
   height: 250px;
@@ -103,7 +104,7 @@ h2 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px dashed #2E3B79;
+  border: 2px dashed #1c5253;
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
@@ -167,7 +168,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid #1c5253;
+  color: #1c5253;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
@@ -250,11 +252,12 @@ h2 {
 .profile-container {
   width: 60%;
   max-width: 800px;
-  background: white;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  opacity: 0.7;
   margin-left: 20px;
 }
 
@@ -266,28 +269,30 @@ h2 {
   }
 
   .profile-container input {
+      color: #1c5253;
       padding: 8px;
       margin-bottom: 5px;
       font-size: 14px;
-      border: 1px solid #2E3B79;
+      border: 1px solid #1c5253;
       border-radius: 5px;
   }
 
   .profile-container button {
       margin-top: 20px;
-      background-color: #2E3B79;
-      color: white;
+      background-color: #c3eb78;
+      color: #1c5253;
       font-size: 18px;
       border-radius: 8px;
-      border: 2px solid #2E3B79;
+      border: 2px solid #1c5253;
       cursor: pointer;
       padding: 10px 15px;
       width: 100%;
   }
 
       .profile-container button:hover {
-          background-color: #A9B5DF;
-          color: black;
+          background-color: #1c5253;
+          color: #c3eb78;
+          border: 2px solid #c3eb78;
           transition: 0.3s;
       }
 
@@ -350,14 +355,17 @@ h2 {
   border: 1px solid black;
   border-radius: 15px;
   cursor: pointer;
-  font-weight: bold;
+  color: #1c5253;
   background-color: white;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .category-option.selected {
-  background-color: green;
-  color: white;
+  background-color: #c3eb78;
+  border: 2px solid #1c5253;
+  color: #1c5253;
+  font-weight: bold;
+  transform: scale(1.05);
 }
 
 .type-selection {
@@ -365,6 +373,7 @@ h2 {
 }
 
 .type-options {
+  color: #1c5253;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -377,18 +386,20 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid black;
+  border: 2px solid #1c5253;
   border-radius: 15px;
   cursor: pointer;
   font-weight: bold;
   background-color: white;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .type-option.selected {
-  background-color: green;
-  color: white;
-  border: 2px solid black;
+  background-color: #c3eb78;
+  color: #1c5253;
+  font-weight: bold;
+  transform: scale(1.05);
+  border: 2px solid #1c5253;
 }
 
 .form-row {
@@ -442,12 +453,12 @@ h2 {
   width: 320px;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border: 3px solid #2D336B;
+  border: 3px solid #1c5253;
   animation: fadeIn 0.3s ease-out;
 }
 
 .popup-content h3 {
-  color: #2D336B;
+  color: #1c5253;
   margin-bottom: 20px;
   font-size: 1.3rem;
   text-align: center;
@@ -468,8 +479,8 @@ h2 {
   padding: 10px 0;
   text-align: center;
   font-size: 14px;
-  background-color: #2D336B;
-  color: white;
+  background-color: #c3eb78;
+  color: #1c5253;
   border: none;
   padding: 10px 25px;
   border-radius: 5px;
@@ -486,8 +497,8 @@ h2 {
   text-align: center;
   font-size: 14px;
   background-color: transparent;
-  color: #2D336B;
-  border: 2px solid #2D336B;
+  color: #1c5253;
+  border: 2px solid #1c5253;
   padding: 8px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -496,12 +507,16 @@ h2 {
 }
 
 .confirm-btn:hover {
-  background-color: #3a457a;
+  background-color: #1c5253;
+  color: #c3eb78;
+  border: 2px solid #c3eb78;
   transform: translateY(-1px);
 }
 
 .cancel-btn:hover {
-  background-color: #f0f0f0;
+  background-color: #c3eb78;
+  color: #1c5253;
+  border: 2px solid #1c5253;
   transform: translateY(-1px);
 }
 

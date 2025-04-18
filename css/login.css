@@ -172,6 +172,39 @@ button:hover {
 .register:hover {
   color: #ffffff;
 }
+
+/* Centered Toast Styles */
+#toast {
+  margin-top: 240px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#toast.success {
+  background-color: #4caf50;
+}
+
+#toast.error {
+  background-color: #f44336;
+}
+
 #footer {
   background: #c3eb78;
   color: #1c5253;

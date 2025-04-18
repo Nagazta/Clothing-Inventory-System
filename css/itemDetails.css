@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   color: #c3eb78;
@@ -8,11 +14,11 @@ body::before {
   content: "";
   position: absolute;
   height: 150%;
-  width: 120%;
+  width: 100%;
   background: url('../assets/wallpaper/home-bg.jpeg') no-repeat center center/cover;
   filter: blur(5px) brightness(0.4);
   z-index: -1;
-  margin-left: -10px;
+  
 }
 
 header {
@@ -110,23 +116,24 @@ button:hover {
       border-radius: 5px;
   }
 
-  .profile-container button {
-      margin-top: 20px;
-      background-color: #2E3B79;
-      color: white;
-      font-size: 18px;
-      border-radius: 8px;
-      border: 2px solid #2E3B79;
-      cursor: pointer;
-      padding: 10px 15px;
-      width: 100%;
+  .product-button {
+    padding: 6px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #1c5253;
+    color: #c3eb78;
+    border: 1.5px solid black;
+    cursor: pointer;
+    transition: 0.3s ease;
+    align-self: flex-start;
+    margin-top: 10px;
   }
-
-      .profile-container button:hover {
-          background-color: #A9B5DF;
-          color: black;
-          transition: 0.3s;
-      }
+  
+  .product-button:hover {
+    background-color: #c3eb78;
+    color: #1c5253;
+  }
+  
 
 .product-container {
   display: flex;
@@ -145,14 +152,14 @@ button:hover {
   justify-content: center;
   overflow: hidden;
   background-color: #f8f8f8;
-  position: relative; /* Added for proper image positioning */
+  position: relative; 
 }
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Changed back to 'cover' to fill container */
+  object-fit: cover; 
   object-position: center;
-  position: absolute; /* Fill container completely */
+  position: absolute; 
   top: 0;
   left: 0;
 }
@@ -160,6 +167,7 @@ button:hover {
   flex: 1;
 }
 .product-name {
+  color: #1c5253;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -215,13 +223,13 @@ button:hover {
 }
 
 .size-box {
-  width: 32px; /* Slightly larger */
+  width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #2E3B79; /* Dark blue border */
-  border-radius: 8px; /* More rounded corners */
+  border: 2px solid #2E3B79; 
+  border-radius: 8px; 
   font-weight: bold;
   font-size: 12px;
   background-color: white;
@@ -265,12 +273,10 @@ button:hover {
   font-size: 11px;
   font-weight: bold;
   cursor: default;
-  /* Removed border property */
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   overflow: hidden;
 }
 
-/* Color-specific backgrounds - match your Add Page colors */
 .color-box[data-color="Red"] { background-color: red; color: white; }
 .color-box[data-color="Blue"] { background-color: blue; color: white; }
 .color-box[data-color="Yellow"] { background-color: yellow; color: black; }
@@ -282,7 +288,6 @@ button:hover {
   border: 1px solid #ddd !important;
 }
 
-/* Details Section - matches Add Page styling */
 .product-details-section {
   margin: 20px;
 }
@@ -360,27 +365,26 @@ button:hover {
 }
 .loading-spinner {
   display: none;
-  /* Add your spinner styles here */
 }
 .back-link-container {
-  padding: 15px 20px 0 20px; /* top, right/left spacing */
+  padding: 15px 20px 0 20px;
 }
 
 .back-link {
   font-size: 14px;
   font-weight: bold;
-  color: #2D336B;
-  background-color: white;
+  color: #1c5253;
+  background-color: #c3eb78;
   padding: 6px 10px;
   border-radius: 6px;
-  border: 1.5px solid #2D336B;
+  border: 1.5px solid #1c5253;
   cursor: pointer;
   width: fit-content;
   transition: all 0.2s ease;
 }
 
 .back-link:hover {
-  background-color: #A9B5DF;
-  color: black;
-  border-color: black;
+  background-color: #1c5253;
+  color: #c3eb78;
+  border-color: #c3eb78;
 }

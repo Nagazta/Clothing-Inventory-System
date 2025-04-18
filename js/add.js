@@ -1,4 +1,3 @@
-// DOM Elements
 const productDetailsBox = document.getElementById('productDetailsBox');
 const contentCareBox = document.getElementById('contentCareBox');
 const sizeFitBox = document.getElementById('sizeFitBox');
@@ -79,9 +78,8 @@ function selectType(element) {
 }
 
 function submitForm() {
-    // First validate all required fields
     if (!validateForm()) {
-        return false; // Stop if validation fails
+        return false; 
     }
 
     // Gather all form data
@@ -125,7 +123,7 @@ async function confirmSubmission() {
     try {
         // Create product data object
         const productData = {
-            id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5), // Unique ID
+            id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5), 
             name: formData.productName,
             category: formData.selectedCategory,
             type: formData.selectedType,
@@ -137,14 +135,13 @@ async function confirmSubmission() {
             contentCare: formData.contentCare,
             sizeFit: formData.sizeFit,
             dateAdded: new Date().toISOString(),
-            isNew: true  // Add this flag to mark as a new item
+            isNew: true  
         };
 
         // Handle image upload
         if (formData.imageInput.files && formData.imageInput.files[0]) {
             productData.image = await getImageData(formData.imageInput.files[0]);
     
-            // Compress image if too large
             if (productData.image.length > 1000000) { // 1MB
                 productData.image = await compressImage(productData.image);
             }

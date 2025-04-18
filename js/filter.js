@@ -1,4 +1,5 @@
  // Track selected filters
+
  let selectedCategory = null;
  let selectedSubcategory = null;
  let selectedSize = 'All';

@@ -1,3 +1,5 @@
+
+  
 body {
     font-family: Arial, sans-serif;
     color: #c3eb78;
@@ -7,12 +9,11 @@ body {
   body::before {
     content: "";
     position: absolute;
-    height: 150%;
-    width: 120%;
+    height: 100%;
+    width: 100%;
     background: url('../assets/wallpaper/home-bg.jpeg') no-repeat center center/cover;
     filter: blur(5px) brightness(0.4);
     z-index: -1;
-    margin-left: -10px;
   }
   
   header {
@@ -64,7 +65,7 @@ body {
     color: #1c5253;
     text-align: center;
     padding: 2rem;
-    width: 100%;
+    width: 95.4%;
     bottom: 0;
     margin-top: 30px;
   }
@@ -112,7 +113,8 @@ body {
 }
 
 .filter-row {
-    display: inline-flex;
+    position: relative;
+    display: inline-block;
     gap: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -121,13 +123,15 @@ body {
     border-radius: 5px;
     padding: 10px 20px;
     margin-bottom: 10px;
-    position: relative;
 }
 
 .filter-row span {
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
+}
+.colorDropdown{
+    margin-left: 110px;
 }
 
 .category-row span, .subcategory-row span {
@@ -137,7 +141,7 @@ body {
 }
 
 .category-row span.active, .subcategory-row span.active {
-    color: #2D336B;
+    color: #c3eb78;
 }
 
 .divider1 {
@@ -167,9 +171,9 @@ body {
     margin: 0 auto;
 }
 
-/* Improved product card container */
-.product-grid > div {
+.product-grid  div {
     background: white;
+    color: #1c5253;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -177,12 +181,11 @@ body {
     overflow: hidden;
 }
 
-.product-grid > div:hover {
+.product-grid  div:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Enhanced product name styling */
 .product-name {
     margin-top: 12px;
     font-size: 15px;
@@ -198,7 +201,6 @@ body {
     padding-top: 8px;
 }
 
-/* Improved image container */
 .box {
     transition: transform 0.3s ease;
 }
@@ -207,7 +209,6 @@ body {
     transform: scale(0.95);
 }
 
-/* Better no-image placeholder */
 .no-image {
     display: flex;
     align-items: center;
@@ -218,38 +219,67 @@ body {
     height: 170px;
 }
 
-/* Dropdown styles */
-.dropdown {
+.dropdown1 {
     display: none;
     position: absolute;
     top: 100%;
+    color: #1c5253;
     background-color: white;
-    border: 1px solid #2E3B79;
+    border: 1px solid #1c5253;
     border-radius: 5px;
     padding: 10px;
     z-index: 10;
     width: 150px;
 }
 
-.dropdown span {
+.dropdown1 span {
     display: block;
     padding: 5px 10px;
     cursor: pointer;
     font-size: 16px;
-    color: #2E3B79;
+    color: #1c5253;
 }
 
-.dropdown span.selected {
-    background-color: #2E3B79;
-    color: white;
+.dropdown1 span.selected {
+    background-color: #c3eb78;
+    color: #1c5253;
 }
 
-.dropdown span:hover {
+.dropdown1 span:hover {
     background-color: #f0f0f0;
 }
+.dropdown2 {
+    display: none;
+    position: absolute;
+    margin-left: 150px;
+    top: 100%;
+    color: #1c5253;
+    background-color: white;
+    border: 1px solid #1c5253;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 10;
+    width: 150px;
+}
 
+.dropdown2 span {
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #1c5253;
+}
+
+.dropdown2 span.selected {
+    background-color: #c3eb78;
+    color: #1c5253;
+}
+
+.dropdown2 span:hover {
+    background-color: #f0f0f0;
+}
 .filter-row .selected-option {
-    color: #2D336B;
+    color: #c3eb78;
 }
 
 .selected-option {
@@ -281,23 +311,6 @@ body {
 
 .profile-container button {
     margin-top: 20px;
-}
-
-.submit-button {
-    border-radius: 8px;
-    margin-right: auto;
-    width: 120px;
-    height: 50px;
-    padding: 8px 12px;
-    border: 2px solid black;
-    background: #FFFFFF;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background: #2D336B;
-    transition: 0.3s;
-    color: white;
 }
 
 .loading, .no-products {

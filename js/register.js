@@ -68,12 +68,14 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
 
   localStorage.setItem("user", JSON.stringify(userData));
 
-  const successMessage = document.getElementById("successMessage");
-  successMessage.textContent = "Registration successful! Redirecting to login page...";
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
   
-  // Optional delay before redirect
   setTimeout(() => {
+    toast.classList.remove("show");
     window.location.href = "login.html";
-  }, 2000); // 2 seconds
+  }, 2000);
+  
+  
   
 });

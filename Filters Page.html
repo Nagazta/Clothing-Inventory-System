@@ -40,7 +40,7 @@
     <div class="filter-container">
         <div class="filter-row">
             <span id="sizeFilter" onclick="toggleSizeDropdown()">Size <span class="selected-option">All</span> <span>▼</span></span>
-            <div class="dropdown" id="sizeDropdown">
+            <div class="dropdown1" id="sizeDropdown">
                 <span onclick="selectSize('All')">All</span>
                 <span onclick="selectSize('XS')">XS</span>
                 <span onclick="selectSize('S')">S</span>
@@ -50,7 +50,7 @@
             </div>
             
             <span id="colorFilter" onclick="toggleColorDropdown()">Color <span class="selected-option">All</span> <span>▼</span></span>
-            <div class="dropdown" id="colorDropdown">
+            <div class="dropdown2" id="colorDropdown">
                 <span onclick="selectColor('All')">All</span>
                 <span onclick="selectColor('Red')">Red</span>
                 <span onclick="selectColor('Blue')">Blue</span>
@@ -71,5 +71,16 @@
    
 
   <script src="js/filter.js"></script>
+
+  <footer id="footer">
+    <ul class="icons">
+      <li><span class="label">Facebook</span></li>
+      <li><span class="label">Instagram</span></li>
+      <li><span class="label">Email</span></li>
+    </ul>
+    <ul class="copyright">
+      <li>&copy; Clothing Inventory 2025</li>
+    </ul>
+  </footer>
 </body>
 </html>
