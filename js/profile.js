@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("lastName").value = user.lastName || "";
     document.getElementById("email").value = user.email || "";
 
-    // Populate info box with full name
+    // Populate info box with full name and email
     const fullName = `${user.firstName || ""} ${user.middleName || ""} ${user.lastName || ""}`.trim();
     document.getElementById("infoUsername").textContent = user.username || "";
     document.getElementById("infoFullName").textContent = fullName || "";
@@ -29,9 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("user", JSON.stringify(user));
 
-        // Update info box with new name
-        const updatedFullName = `${user.firstName} ${user.middleName} ${user.lastName} ${user.email}`.trim();
+        // Update info box and input with new values
+        const updatedFullName = `${user.firstName} ${user.middleName} ${user.lastName}`.trim();
+        const updatedEmail = user.email || "";
+
+        document.getElementById("email").value = updatedEmail; // Fixed this line
         document.getElementById("infoFullName").textContent = updatedFullName;
+        document.getElementById("infoEmail").textContent = updatedEmail;
 
         showToast("Profile updated!");
     });
