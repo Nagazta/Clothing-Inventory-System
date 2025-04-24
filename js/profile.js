@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const updatedFullName = `${user.firstName} ${user.middleName} ${user.lastName}`.trim();
         const updatedEmail = user.email || "";
 
-        document.getElementById("email").value = updatedEmail; // Fixed this line
+        document.getElementById("email").value = updatedEmail;
         document.getElementById("infoFullName").textContent = updatedFullName;
         document.getElementById("infoEmail").textContent = updatedEmail;
 

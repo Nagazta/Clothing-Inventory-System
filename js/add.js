@@ -377,7 +377,7 @@ async function saveProduct(productData) {
         products.push(productData);
         localStorage.setItem('products', JSON.stringify(products));
 
-        console.log('Successfully saved:', productData); // Debug
+        console.log('Successfully saved:', productData); 
         return true;
     } catch (error) {
         console.error('Save error:', error);
