@@ -187,6 +187,7 @@ button:hover {
   padding: 3px 10px;
   background-color: #f0f0f0;
   border-radius: 4px;
+  color: #1c5253;
 }
 .product-category-type {
   margin: 8px 0;
@@ -284,7 +285,7 @@ button:hover {
 .color-box[data-color="Grey"] { background-color: grey; color: white; }
 .color-box[data-color="Brown"] { background-color: brown; color: white; }
 .color-box[data-color="Black"] { background-color: black; color: white; }
-.color-box[data-color="White"] {
+.color-box[data-color="White"] { color: black;
   border: 1px solid #ddd !important;
 }
 
