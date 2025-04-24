@@ -1,6 +1,6 @@
 // Runs when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  updateHomepage(); // Update the homepage on page load
+  updateHomepage(); 
 });
 
 // Function to update the homepage with current product data
@@ -16,7 +16,7 @@ function updateHomepage() {
 
   // Update the stock table dynamically
   const stockTableBody = document.getElementById('stockTableBody');
-  stockTableBody.innerHTML = ''; // Clear the current table
+  stockTableBody.innerHTML = ''; 
 
   lowStockItems.forEach(item => {
     const row = document.createElement('tr');
@@ -37,7 +37,7 @@ function updateHomepage() {
     stockTableBody.appendChild(row);
   });
 
-  // Display username
+ 
  
 }
 
@@ -48,7 +48,7 @@ function addNewItem(name, quantity) {
   const newItem = {
     name: name,
     quantity: quantity,
-    isNew: true, // Important for New Items count
+    isNew: true, 
   };
 
   products.push(newItem);

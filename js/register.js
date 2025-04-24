@@ -5,7 +5,7 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
   let username = document.getElementById("username").value.trim();
   let lastName = document.getElementById("lastName").value.trim();
   let firstName = document.getElementById("firstName").value.trim();
-  let middleName = document.getElementById("middleName").value.trim(); // optional
+  let middleName = document.getElementById("middleName").value.trim(); 
   let email = document.getElementById("email").value.trim();
   let password = document.getElementById("password").value.trim();
   let cPassword = document.getElementById("confirmPassword").value.trim();

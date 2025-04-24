@@ -393,7 +393,6 @@ async function compressImage(dataUrl) {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
 
-            // Calculate new dimensions (reduce by 50%)
             const width = img.width * 0.5;
             const height = img.height * 0.5;
 
@@ -401,7 +400,6 @@ async function compressImage(dataUrl) {
             canvas.height = height;
             ctx.drawImage(img, 0, 0, width, height);
 
-            // Convert to JPEG with 70% quality
             resolve(canvas.toDataURL('image/jpeg', 0.7));
         };
         img.src = dataUrl;
